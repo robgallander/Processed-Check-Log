@@ -1,0 +1,2301 @@
+{
+ "exportedAt": "2026-10-20",
+ "checks": {
+  "15113390900": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "95617618",
+    "matter": "08729-Solis",
+    "mfr": "AHM",
+    "mfrFull": "American Honda Motor Co., Inc.",
+    "plaintiff": "VICTORIA SOLIS",
+    "review": "Complete",
+    "reviewedDate": "2026-10-11",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "15344639288": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-01",
+    "coordId": "94470794",
+    "matter": "10617-Salazar",
+    "mfr": "AHM",
+    "mfrFull": "American Honda Motor Co., Inc.",
+    "plaintiff": "ALEX SALAZAR and PAOLA SALAZAR",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": ""
+   }
+  },
+  "15472783647": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-02",
+    "coordId": "97151554",
+    "matter": "09219-Ramos Cruz",
+    "mfr": "FMC",
+    "mfrFull": "Ford Motor Company",
+    "plaintiff": "FRANCISCO RAMOS CRUZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-10-01"
+   }
+  },
+  "15603756298": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-07",
+    "coordId": "97151554",
+    "matter": "09477-Diaz",
+    "mfr": "HMA",
+    "mfrFull": "Hyundai Motor America",
+    "plaintiff": "MICHAEL D. DIAZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "15856205829": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "95617618",
+    "matter": "13915-Morales",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "JOSE JUAN MORALES HERNANDEZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "15975664685": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "97151553",
+    "matter": "10581-Turijan",
+    "mfr": "FMC",
+    "mfrFull": "Ford Motor Company",
+    "plaintiff": "ANA LILIA TURIJAN-CEREZO and LESLIE NAJERA-TURIJAN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-12",
+    "stage": "1072094529",
+    "surrender": "2026-09-24"
+   }
+  },
+  "16044956693": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-02",
+    "coordId": "95617618",
+    "matter": "10387-Tann",
+    "mfr": "NNA",
+    "mfrFull": "Nissan North America, Inc.",
+    "plaintiff": "MICHAEL A. TANN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "16181508436": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-09-30",
+    "coordId": "95617618",
+    "matter": "15713-Cruz",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "JOEY E. CRUZ and ROSALIE MONTENEGRO CRUZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "16281074949": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "253228014",
+    "matter": "12283-Mota",
+    "mfr": "KIA",
+    "mfrFull": "Kia Motors America, Inc.",
+    "plaintiff": "OVIDIO MELGARSOLARES",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "16320430441": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "95617618",
+    "matter": "08069-Gill",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "LUCAS BERNADINO GILL",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "16320466972": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-09-29",
+    "coordId": "95617618",
+    "matter": "08882-Alexandrino",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "WENDERSON ALEXANDRINO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "16320484141": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "80959304",
+    "matter": "04555-Anaya",
+    "mfr": "KIA",
+    "mfrFull": "Kia Motors America, Inc.",
+    "plaintiff": "ADRIANA ANAYA",
+    "review": "Complete",
+    "reviewedDate": "",
+    "stage": "1072094529",
+    "surrender": ""
+   }
+  },
+  "16320491444": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "253228014",
+    "matter": "08217-Sealy",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "SHARON SEALY",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "16320510120": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-06",
+    "coordId": "97151553",
+    "matter": "08122-Castro",
+    "mfr": "KIA",
+    "mfrFull": "Kia Motors America, Inc.",
+    "plaintiff": "REBECA CASTRO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "16320520195": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-09-29",
+    "coordId": "95617618",
+    "matter": "09183-Herrera",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "JUAN CARLOS ALBERTO TRUJILLO and ADRIANA JENNIFER HERRERA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "16320524693": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "95617618",
+    "matter": "09154-Mitchell",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "SAMANTHA MITCHELL",
+    "review": "Complete",
+    "reviewedDate": "2026-10-19",
+    "stage": "1072094529",
+    "surrender": "2026-10-05"
+   }
+  },
+  "16320538650": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-06-23",
+    "coordId": "95617618",
+    "matter": "08632-Romualdo",
+    "mfr": "AHM",
+    "mfrFull": "American Honda Motor Co., Inc.",
+    "plaintiff": "MARIA E. ROMUALDO-ROMERO",
+    "review": "Complete",
+    "reviewedDate": "2026-07-16",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "16320556674": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-02",
+    "coordId": "97151554",
+    "matter": "06788-Valadez",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "ALEXANDRO SERRANO FLORES and ARMANDO VALADEZ MUNOZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "16320572555": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-08",
+    "coordId": "95617618",
+    "matter": "03854-Gonzalez",
+    "mfr": "KIA",
+    "mfrFull": "Kia Motors America, Inc.",
+    "plaintiff": "BETH B. GONZALES",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "16320592287": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "95617618",
+    "matter": "13218-Escobedo",
+    "mfr": "FMC",
+    "mfrFull": "Ford Motor Company",
+    "plaintiff": "ALLISON ESCOBEDO and ALEJANDRO ESCOBEDO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-19",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "16320598020": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "95617618",
+    "matter": "09272-Tillman",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "DEMETRICE J. COLLIER-TILLMAN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "16320601424": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "80959304",
+    "matter": "11969-Estrada",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "HECTOR EDGARDO ESTRADA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "16320637530": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "97151554",
+    "matter": "11033-Johnson",
+    "mfr": "FMC",
+    "mfrFull": "Ford Motor Company",
+    "plaintiff": "ANTHONY JOHNSON",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "16320643483": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-01",
+    "coordId": "95617618",
+    "matter": "07271-Marban",
+    "mfr": "AHM",
+    "mfrFull": "American Honda Motor Co., Inc.",
+    "plaintiff": "LINA ESTHER MARBAN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-12",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "16320651563": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "95617618",
+    "matter": "10445-Booth",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "ANDRIA BOOTH",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "16320667405": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "95617618",
+    "matter": "04973-Cross",
+    "mfr": "NNA",
+    "mfrFull": "Nissan North America, Inc.",
+    "plaintiff": "JAQUELINE BROWN and CURTIS LEE CROSS",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "16508291134": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "629519943",
+    "matter": "10218-Hovhannisyan",
+    "mfr": "MBUSA",
+    "mfrFull": "Mercedes-Benz USA, LLC",
+    "plaintiff": "SUREN HOVHANNISYAN",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-02-13",
+    "stage": "1072094529",
+    "surrender": "2025-12-08"
+   }
+  },
+  "16857906873": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "97151553",
+    "matter": "11145-Cruz",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "FRANCISCO JAVIER CRUZ PONCE",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "17002207910": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-09-29",
+    "coordId": "80959304",
+    "matter": "12523-Vallecillo",
+    "mfr": "KIA",
+    "mfrFull": "Kia Motors America, Inc.",
+    "plaintiff": "KARLA VALLECILLO GUTIERREZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-09-23"
+   }
+  },
+  "17403036253": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "95617618",
+    "matter": "12423-Wieber",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "PATRICIA LILLIAN COLE",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "17585825063": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-15",
+    "coordId": "80959304",
+    "matter": "03568-Fabela",
+    "mfr": "NNA",
+    "mfrFull": "Nissan North America, Inc.",
+    "plaintiff": "SUMMER-ROSE FABELA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-10-09"
+   }
+  },
+  "17657478064": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-16",
+    "coordId": "80959304",
+    "matter": "13056-Andrews",
+    "mfr": "FMC",
+    "mfrFull": "Ford Motor Company",
+    "plaintiff": "EARL R. ANDREWS",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-18",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "17680972706": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-02",
+    "coordId": "95617618",
+    "matter": "11217-Ayala Calderon",
+    "mfr": "NNA",
+    "mfrFull": "Nissan North America, Inc.",
+    "plaintiff": "REFUGIO AYALA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "148011373",
+    "surrender": "2026-09-28"
+   }
+  },
+  "17753292121": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "95617618",
+    "matter": "09808-Cornel",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "LISA CORONEL",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "17797062195": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "95617618",
+    "matter": "11166-Amilpa",
+    "mfr": "NNA",
+    "mfrFull": "Nissan North America, Inc.",
+    "plaintiff": "DELFINA AMILPAS BERNAL",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "18115346025": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "95617618",
+    "matter": "16908-Gonzalez",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "MARGIE GONZALEZ and GUILLAUME GONZALEZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "18128532842": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "95617618",
+    "matter": "11791-Coroy",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "FRANKLIN J. COROY",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "18265886528": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-14",
+    "coordId": "80959304",
+    "matter": "12530-Cortez",
+    "mfr": "VWGoA",
+    "mfrFull": "Volkswagen Group of America, Inc.",
+    "plaintiff": "LUIS CORTEZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "18274611526": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "95617618",
+    "matter": "11427-Anderson",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "SILVIA SANCHEZ and KENNETH PAUL ANDERSON",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "18364694958": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "95617618",
+    "matter": "10854-Polidor-Tar",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "TRACI M. TAR",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "18747648288": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-14",
+    "coordId": "95617618",
+    "matter": "14184-Nazarian",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "ARAYEK NAZARYAN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-10-07"
+   }
+  },
+  "18804275736": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "80959304",
+    "matter": "11803-David",
+    "mfr": "AHM",
+    "mfrFull": "American Honda Motor Co., Inc.",
+    "plaintiff": "DEYSI E. CORTEZ",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-17",
+    "stage": "1072094529",
+    "surrender": ""
+   }
+  },
+  "19070255429": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "95617618",
+    "matter": "13558-Baharimehr",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "HAMID R. BAHARIMEHR",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "19100822796": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "18106-Win",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "JACK YUNGJACK WIN",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-24"
+   }
+  },
+  "19197136919": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-16",
+    "coordId": "95617618",
+    "matter": "14394-Duro",
+    "mfr": "HMA",
+    "mfrFull": "Hyundai Motor America",
+    "plaintiff": "LORINA MARGARET DURO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-10-01"
+   }
+  },
+  "19323525713": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "80959304",
+    "matter": "13795-Migotti",
+    "mfr": "SOA",
+    "mfrFull": "Subaru of America, Inc.",
+    "plaintiff": "BRITTA MIGOTTI and ADRIAN MIGOTTI",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "19565407577": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "97151553",
+    "matter": "12237-Branscome",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "JILL CHRISTINA BRANSCOME",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "19598129790": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-15",
+    "coordId": "80959304",
+    "matter": "18450-Hernandez",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "CHRISTINE ELIZABETH HERNANDEZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "19890202677": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-06",
+    "coordId": "95617618",
+    "matter": "11811-Tambriz",
+    "mfr": "FMC",
+    "mfrFull": "Ford Motor Company",
+    "plaintiff": "MANUEL TAMBRIZ and MANUEL TAMBRIZ-GUARCHAJ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "19892606097": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "80959304",
+    "matter": "12794-Miranda",
+    "mfr": "KIA",
+    "mfrFull": "Kia Motors America, Inc.",
+    "plaintiff": "MONICA MIRANDA and JOHNNY FRANCISCO MIRANDA, JR.",
+    "review": "Complete",
+    "reviewedDate": "2026-10-09",
+    "stage": "1072094529",
+    "surrender": "2026-09-17"
+   }
+  },
+  "19994379157": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-16",
+    "coordId": "95617618",
+    "matter": "13333-Hardwick",
+    "mfr": "FMC",
+    "mfrFull": "Ford Motor Company",
+    "plaintiff": "CODY R. HARDWICK and BREANNA J. HARDWICK",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "20195630477": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "95617618",
+    "matter": "14936-Moreno",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "MARTIN MORENO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "20358061953": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "95617618",
+    "matter": "15042-Medina",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "JONATHAN ISAIAS MEDINA CAMARENA and LUZELENA ELENA CAMACHO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "20383862630": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "13601-Smbacyan",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "VOLODYA SMBATYAN",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "20411264397": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "80959304",
+    "matter": "13903-Alvarado",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "MYRA JOYCE NUNO and ALYSSA MIRANDA ALVARADO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "20514790922": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "97151554",
+    "matter": "14560-Arredondo",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "RAMIRO ARREDONDO MEZA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "20661918571": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-01",
+    "coordId": "95617618",
+    "matter": "15264-Lopez",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "THOMAS AMADOR LOPEZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-12",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "20822962267": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "80959304",
+    "matter": "14383-Macedo",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "GERALD PETER MACEDO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-22"
+   }
+  },
+  "20849168386": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "80959304",
+    "matter": "12757-Martinez Figueroa",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "JOSE LUIS MARTINEZ PITA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "20976490779": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-14",
+    "coordId": "80959304",
+    "matter": "18090-Santiago",
+    "mfr": "VWGoA",
+    "mfrFull": "Volkswagen Group of America, Inc.",
+    "plaintiff": "MARY DE SANTIAGO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": ""
+   }
+  },
+  "21150875223": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "95617618",
+    "matter": "20422-Bautista Higareda",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "JOSE MARTIN BAUTISTA HIGAREDA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-11",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "21177631142": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "14405-Woo-Thomas",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "CHERYL WOO THOMAS",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-12",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "21215433989": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-09-22",
+    "coordId": "97151553",
+    "matter": "20865-Castanon",
+    "mfr": "FMC",
+    "mfrFull": "Ford Motor Company",
+    "plaintiff": "YOLANDA CASTANON",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-22"
+   }
+  },
+  "21226570527": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-06",
+    "coordId": "97151554",
+    "matter": "14078-Gil",
+    "mfr": "KIA",
+    "mfrFull": "Kia Motors America, Inc.",
+    "plaintiff": "YARETZY H. GIL and JOSE L. GIL CAMPOS",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "21233305528": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "95617618",
+    "matter": "13270-Gonzales",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "ANDREA E. GONZALES and ANTONIO GONZALES",
+    "review": "Complete",
+    "reviewedDate": "2026-10-19",
+    "stage": "1072094529",
+    "surrender": "2026-10-02"
+   }
+  },
+  "21233673093": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "95617618",
+    "matter": "17408-Nellhaus",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "AARON NELLHAUS",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "21360116225": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-15",
+    "coordId": "80959304",
+    "matter": "17522-de Leon",
+    "mfr": "VWGoA",
+    "mfrFull": "Volkswagen Group of America, Inc.",
+    "plaintiff": "HEIDI DIANATY and NICHOLAS DE LEON",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "21586620739": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "95617618",
+    "matter": "16633-Moore",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "DONALD E. MOORE",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "21634554881": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "95617618",
+    "matter": "13815-Cerda",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "JESUS CERDA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-19",
+    "stage": "1072094529",
+    "surrender": "2026-10-02"
+   }
+  },
+  "21652897833": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "95617618",
+    "matter": "15977-Cruz",
+    "mfr": "HMA",
+    "mfrFull": "Hyundai Motor America",
+    "plaintiff": "EILEEN MICHELLE CRUZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-18"
+   }
+  },
+  "21722890916": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "95617618",
+    "matter": "14285-Kwak",
+    "mfr": "HMA",
+    "mfrFull": "Hyundai Motor America",
+    "plaintiff": "KYONG SOOK KWAK",
+    "review": "Complete",
+    "reviewedDate": "2026-10-12",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "21821210187": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "97151553",
+    "matter": "14853-Rosales",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "CARMEN ROSALES and GEORGE L. MERENDON III",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "21822856203": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "95617618",
+    "matter": "14477-Leshem",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "NATHANIEL LESHEM and MATTI LESHEM",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "21936942754": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "16077-Brown",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "CLINTON EUGENE BROWN",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "22038344870": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-14",
+    "coordId": "80959304",
+    "matter": "18771-Ramirez",
+    "mfr": "VWGoA",
+    "mfrFull": "Volkswagen Group of America, Inc.",
+    "plaintiff": "ERICK A. RAMIREZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-10-01"
+   }
+  },
+  "22093300083": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-09-11",
+    "coordId": "95617618",
+    "matter": "16897-Martinez",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "PERLA SARAHI PEREZ MARTINEZ and FILOMENA MARTINEZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "22391681145": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "95617618",
+    "matter": "15345-Johnson",
+    "mfr": "JLRNA",
+    "mfrFull": "Jaguar Land Rover of North America, LLC",
+    "plaintiff": "BRIAN KEITH JOHNSON",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-10-01"
+   }
+  },
+  "22556840462": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "95617618",
+    "matter": "15076-Stout",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "CALVIN BRUCE CHANG",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "22680048941": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "97151554",
+    "matter": "15477-Gonzalez",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "CYNTHIA M. GONZALEZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-12",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "22876325989": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "95617618",
+    "matter": "15795-Silver",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "RACHEL L. BENDAVID",
+    "review": "Complete",
+    "reviewedDate": "2026-10-11",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "23217633799": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "95617618",
+    "matter": "15423-Hughes",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "MONIQUE C. HUGHES",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "23256758638": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-14",
+    "coordId": "80959304",
+    "matter": "15680-Valle",
+    "mfr": "VWGoA",
+    "mfrFull": "Volkswagen Group of America, Inc.",
+    "plaintiff": "ALBERT J. VALLE",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "23301882511": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "95617618",
+    "matter": "17505-Tyerman",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "DOUGLAS TYERMAN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "23316104491": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "80959304",
+    "matter": "15995-Perez",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "ROSA GUERRERO HERNANDEZ and JOSE A. PEREZ DEL AGUILA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-08"
+   }
+  },
+  "23401948068": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2025-12-03",
+    "coordId": "629519943",
+    "matter": "16037-Conti",
+    "mfr": "VWGoA",
+    "mfrFull": "Volkswagen Group of America, Inc.",
+    "plaintiff": "ALINA M. CONTI",
+    "review": "Complete",
+    "reviewedDate": "",
+    "stage": "1072094529",
+    "surrender": ""
+   }
+  },
+  "28217645403": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "95617618",
+    "matter": "15226-Dukic",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "VLADAN DUKIC",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "1072094529",
+    "surrender": ""
+   }
+  },
+  "28363793294": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "17692-Valmeo-Protacio",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "ROSALINDA VALMEOPROTACIO and RODOLFO BAGUINGUINTO PROTACIO",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-09",
+    "stage": "1072094529",
+    "surrender": "2026-09-04"
+   }
+  },
+  "28528035729": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "20176-Viswanathan Geetha",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "UMESHNATH VISWANATHANGEETHA and UMESHNATH LLC",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-09",
+    "stage": "1072094529",
+    "surrender": "2026-09-21"
+   }
+  },
+  "28633843044": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-15",
+    "coordId": "97151553",
+    "matter": "15498-Miller",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "JASON CARL MILLER",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-09-17"
+   }
+  },
+  "28666702349": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "95617618",
+    "matter": "15690-Janes",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "ERIC M. JANES",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "28746803469": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-07",
+    "coordId": "80959304",
+    "matter": "17103-Acosta",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "GLORIA ACOSTA MEZA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "28900169243": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-01",
+    "coordId": "97151554",
+    "matter": "19409-Garcia",
+    "mfr": "TMS",
+    "mfrFull": "Toyota Motor Sales, USA, Inc.",
+    "plaintiff": "LILLIANA AVILA and ALBERTO A. GARCIA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-12",
+    "stage": "1072094529",
+    "surrender": "2026-09-26"
+   }
+  },
+  "28942442862": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-09-30",
+    "coordId": "253228014",
+    "matter": "19906-Camargo",
+    "mfr": "TMS",
+    "mfrFull": "Toyota Motor Sales, USA, Inc.",
+    "plaintiff": "SILVIA VERONICA CAMARGO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-09-24"
+   }
+  },
+  "28960170825": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-05",
+    "coordId": "97151554",
+    "matter": "17538-Ramos",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "MIRELIA RAMOS",
+    "review": "Complete",
+    "reviewedDate": "2026-10-12",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "29148850529": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-07",
+    "coordId": "80959304",
+    "matter": "16865-Munsif",
+    "mfr": "NNA",
+    "mfrFull": "Nissan North America, Inc.",
+    "plaintiff": "PARWANA MUNSIF",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "29567602952": {
+   "firstProcessed": "2026-10-20",
+   "snap": {
+    "checksDate": "2026-10-19",
+    "coordId": "95617618",
+    "matter": "16249-Bailey",
+    "mfr": "HMA",
+    "mfrFull": "Hyundai Motor America",
+    "plaintiff": "BRUCE W. BAILEY and DEBRA M. BAILEY",
+    "review": "Complete",
+    "reviewedDate": "2026-10-19",
+    "stage": "1072094529",
+    "surrender": ""
+   }
+  },
+  "29894800440": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "80959304",
+    "matter": "17403-Cas",
+    "mfr": "JLRNA",
+    "mfrFull": "Jaguar Land Rover of North America, LLC",
+    "plaintiff": "LISA LOUISE CASTELLANOS",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": ""
+   }
+  },
+  "29930407294": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "97151554",
+    "matter": "17753-Hernandez Reyes",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "JUAN RAMON HERNANDEZ REYES and J. HERNANDEZ & SONS LLC",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "29987184186": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-02",
+    "coordId": "97151554",
+    "matter": "16838-Cervantes",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "CARLOS CERVANTES CARRILLO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "30192119865": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-09-28",
+    "coordId": "97151554",
+    "matter": "17227-Estrada",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "ANNA ESTRADA and JESUS SERVIN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-09",
+    "stage": "1072094529",
+    "surrender": "2026-09-16"
+   }
+  },
+  "30194889261": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "80959304",
+    "matter": "18588-Marmolejo",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "JOSEPH MICHAEL MARMOLEJO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "30920304159": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-09-30",
+    "coordId": "253228014",
+    "matter": "17830-Gallo",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "JOSHUA A. GALLO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-23"
+   }
+  },
+  "31054289531": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-14",
+    "coordId": "80959304",
+    "matter": "16790-Majzoob",
+    "mfr": "VWGoA",
+    "mfrFull": "Volkswagen Group of America, Inc.",
+    "plaintiff": "KASRA MAJZOOB",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "31214262888": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-01",
+    "coordId": "97151554",
+    "matter": "17316-Rodriguez",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "RICARDO J. RODRIGUEZ SANCHEZ and ANDREA C. RODARTE PAEZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-09",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "31710770479": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-14",
+    "coordId": "80959304",
+    "matter": "16717-Lynch",
+    "mfr": "VWGoA",
+    "mfrFull": "Volkswagen Group of America, Inc.",
+    "plaintiff": "COREY LYNCH",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "31968806929": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-07",
+    "coordId": "95617618",
+    "matter": "17484-Romero",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "DIEGO ROMERO SEPULVEDA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "31979657221": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-12",
+    "coordId": "80959304",
+    "matter": "18818-Soliman",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "RODOLFO SOLIMAN and CATHERINE SOLIMAN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-21"
+   }
+  },
+  "32083576372": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-15",
+    "coordId": "80959304",
+    "matter": "17095-Kohan",
+    "mfr": "VWGoA",
+    "mfrFull": "Volkswagen Group of America, Inc.",
+    "plaintiff": "ELIYAN KOHAN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "32226496847": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-01",
+    "coordId": "95617618",
+    "matter": "17208-Serrano",
+    "mfr": "FMC",
+    "mfrFull": "Ford Motor Company",
+    "plaintiff": "MARIO SERRANO, JR. and MONTSERRAT SERRANO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-12",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "32264977004": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-07",
+    "coordId": "95617618",
+    "matter": "17267-Vilchis",
+    "mfr": "NNA",
+    "mfrFull": "Nissan North America, Inc.",
+    "plaintiff": "EDUVIGES VILCHISGONZALEZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-11",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "32325302155": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "80959304",
+    "matter": "18031-Duarte",
+    "mfr": "AHM",
+    "mfrFull": "American Honda Motor Co., Inc.",
+    "plaintiff": "DONALDO LIMA ESCOBAR and ANDI A. DUARTE",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "32553245563": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-02",
+    "coordId": "95617618",
+    "matter": "17369-Plascencia",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "JOSE MANUEL PLASCENCIA and KRISTEN SILVA PLASCENCIA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "32802498225": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-09-28",
+    "coordId": "95617618",
+    "matter": "17682-Koras",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "JENNIFER L. GILLKORAS",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "32823182160": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-07",
+    "coordId": "94470794",
+    "matter": "18111-Gomez",
+    "mfr": "BMW",
+    "mfrFull": "BMW of North America, LLC",
+    "plaintiff": "PALEMON RAFAEL GOMEZ and ALMA MARTIN DEL CAMPO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "32828095299": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-15",
+    "coordId": "95617618",
+    "matter": "16975-Dorado",
+    "mfr": "NNA",
+    "mfrFull": "Nissan North America, Inc.",
+    "plaintiff": "JERRAH MARIE KOMPELIEN and DAVID ARTURO DORADO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-09-18"
+   }
+  },
+  "33001571675": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-15",
+    "coordId": "80959304",
+    "matter": "18438-Mesa",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "JAMMIE NEWTON",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "33119015806": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-06",
+    "coordId": "95617618",
+    "matter": "17831-Ruiz",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "MARIA CRYSTAL RUIZ and ROBERTO RUIZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-19",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "33531278435": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-06",
+    "coordId": "95617618",
+    "matter": "18969-Juarez",
+    "mfr": "NNA",
+    "mfrFull": "Nissan North America, Inc.",
+    "plaintiff": "CRISTIAN JUAREZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-10",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "33998071600": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-07",
+    "coordId": "95617618",
+    "matter": "18749-Gomez",
+    "mfr": "NNA",
+    "mfrFull": "Nissan North America, Inc.",
+    "plaintiff": "JOEL E. FELIX",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": ""
+   }
+  },
+  "34622284055": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-09-28",
+    "coordId": "95617618",
+    "matter": "19277-Magana",
+    "mfr": "FMC",
+    "mfrFull": "Ford Motor Company",
+    "plaintiff": "MELISSA MAGANA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-26"
+   }
+  },
+  "34634503313": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "95617618",
+    "matter": "17716-Lopez",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "GILBERTO LOPEZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-10-01"
+   }
+  },
+  "34748914468": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-16",
+    "coordId": "80959304",
+    "matter": "17683-Perez",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "EMMANUEL PEREZ",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-18",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "35368416513": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-16",
+    "coordId": "80959304",
+    "matter": "20259-Lima",
+    "mfr": "FMC",
+    "mfrFull": "Ford Motor Company",
+    "plaintiff": "RAFAEL A. LIMA",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-17",
+    "stage": "1072094529",
+    "surrender": ""
+   }
+  },
+  "35590195216": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-02",
+    "coordId": "95617618",
+    "matter": "20102-Kwak",
+    "mfr": "PCNA",
+    "mfrFull": "PORSCHE",
+    "plaintiff": "SOO JIN LEE",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "35605918507": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-01",
+    "coordId": "97151554",
+    "matter": "18101-Oxte",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "GENARO OXTE CAN and DIEGO GENARO OXTE TORRES",
+    "review": "Complete",
+    "reviewedDate": "2026-10-09",
+    "stage": "1072094529",
+    "surrender": "2026-09-25"
+   }
+  },
+  "35636679343": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-07",
+    "coordId": "95617618",
+    "matter": "19179-Butler",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "MARIA BUTLER and ANDRE BUTLER JR.",
+    "review": "Complete",
+    "reviewedDate": "2026-10-11",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "36358582326": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-14",
+    "coordId": "80959304",
+    "matter": "21895-Ahlawat",
+    "mfr": "VWGoA",
+    "mfrFull": "Volkswagen Group of America, Inc.",
+    "plaintiff": "RAHUL AHLAWAT",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "36432689293": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-16",
+    "coordId": "80959304",
+    "matter": "19981-Gonzales",
+    "mfr": "FCA",
+    "mfrFull": "FCA US LLC",
+    "plaintiff": "JOSEPH FRANKIE GONZALES and SHERI LOUISE GONZALES",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-18",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "37435403663": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "80959304",
+    "matter": "20034-Flores",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "PEDRO FLORES",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "38515710856": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-14",
+    "coordId": "80959304",
+    "matter": "21625-Beknazarov",
+    "mfr": "VWGoA",
+    "mfrFull": "Volkswagen Group of America, Inc.",
+    "plaintiff": "EDWARD BEKNAZAROV",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-29"
+   }
+  },
+  "38701182793": {
+   "firstProcessed": "2026-10-20",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "95617618",
+    "matter": "22082-Lopez Vargas",
+    "mfr": "NNA",
+    "mfrFull": "Nissan North America, Inc.",
+    "plaintiff": "DINORAH YANET LOPEZ VARGAS",
+    "review": "Complete",
+    "reviewedDate": "2026-10-19",
+    "stage": "1072094529",
+    "surrender": "2026-10-02"
+   }
+  },
+  "38992148665": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-08",
+    "coordId": "95617618",
+    "matter": "20293-Savazian",
+    "mfr": "HMA",
+    "mfrFull": "Hyundai Motor America",
+    "plaintiff": "TAMAR H. SAVAZIAN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-10-02"
+   }
+  },
+  "39351059268": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-08",
+    "coordId": "95617618",
+    "matter": "21208-Duchemin",
+    "mfr": "MBUSA",
+    "mfrFull": "Mercedes-Benz USA, LLC",
+    "plaintiff": "DAVID DUCHEMIN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-16",
+    "stage": "1072094529",
+    "surrender": "2026-10-01"
+   }
+  },
+  "39513920074": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "20991-Tyler",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "CHRISHAWN MARIE TYLER",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "39841962549": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "95617618",
+    "matter": "21265-Guest",
+    "mfr": "KIA",
+    "mfrFull": "Kia Motors America, Inc.",
+    "plaintiff": "GAYLE ANN GUEST",
+    "review": "Complete",
+    "reviewedDate": "2026-10-11",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "39978150679": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-02",
+    "coordId": "95617618",
+    "matter": "21437-Budow",
+    "mfr": "FMC",
+    "mfrFull": "Ford Motor Company",
+    "plaintiff": "SCOTT BUDOW",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-26"
+   }
+  },
+  "40036964013": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-07",
+    "coordId": "94470794",
+    "matter": "20127-Lavian",
+    "mfr": "BMW",
+    "mfrFull": "BMW of North America, LLC",
+    "plaintiff": "ALAN LAVIAN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "40680493379": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "95617618",
+    "matter": "21144-Rossi",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "NICHOLAS G. ROSSI",
+    "review": "Complete",
+    "reviewedDate": "2026-10-11",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "43056119371": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-02",
+    "coordId": "95617618",
+    "matter": "22517-Vaquero Guzman",
+    "mfr": "TMS",
+    "mfrFull": "Toyota Motor Sales, USA, Inc.",
+    "plaintiff": "FERNANDO VAQUERO GUZMAN and ROBERTA TLATELPA VAQUERO\n\nFernando Vaquero Guzman and Roberta Tlatelpa Vaquero",
+    "review": "Complete",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "43247070590": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "21140-Seckinger",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "JEREMY BERNARD SECKINGER and TOMEKA MIYA SECKINGER",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "43494123033": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "97151554",
+    "matter": "21615-Payomo",
+    "mfr": "SOA",
+    "mfrFull": "Subaru of America, Inc.",
+    "plaintiff": "JAMYE LIA PAYOMO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "43839841887": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-14",
+    "coordId": "95617618",
+    "matter": "22337-Melamed",
+    "mfr": "PCNA",
+    "mfrFull": "PORSCHE",
+    "plaintiff": "SEPEHR MELAMED",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-09-09"
+   }
+  },
+  "44145388581": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-09",
+    "coordId": "95617618",
+    "matter": "24695-Djavaheri",
+    "mfr": "GM",
+    "mfrFull": "General Motors LLC",
+    "plaintiff": "FARSHID KANGAVARI",
+    "review": "Complete",
+    "reviewedDate": "2026-10-17",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "44886377364": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-02",
+    "coordId": "97151554",
+    "matter": "21877-Benitez",
+    "mfr": "NNA",
+    "mfrFull": "Nissan North America, Inc.",
+    "plaintiff": "JULIO RENE BENITEZ DIAZ",
+    "review": "Complete",
+    "reviewedDate": "2026-10-14",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "46159254584": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "22501-Tong",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "QUANVU MARK NGO",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  },
+  "46399143690": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "21828-Vasquez",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "JOHN DAVID VASQUEZ and LISA ANNE VASQUEZ",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-13",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "46819237673": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "95617618",
+    "matter": "22503-Klein",
+    "mfr": "MBUSA",
+    "mfrFull": "Mercedes-Benz USA, LLC",
+    "plaintiff": "IRENA GUDIS and JACQUELINE KLEIN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-19",
+    "stage": "1072094529",
+    "surrender": "2026-10-03"
+   }
+  },
+  "48867543192": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-13",
+    "coordId": "95617618",
+    "matter": "22982-Escoto",
+    "mfr": "SOA",
+    "mfrFull": "Subaru of America, Inc.",
+    "plaintiff": "TYSON E. ESCOTO",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "1072094529",
+    "surrender": "2026-10-02"
+   }
+  },
+  "51527345984": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "2026-10-15",
+    "coordId": "80959304",
+    "matter": "22963-Estepanian",
+    "mfr": "VWGoA",
+    "mfrFull": "Volkswagen Group of America, Inc.",
+    "plaintiff": "DRO ESRAEILI ESTEPANIAN",
+    "review": "Complete",
+    "reviewedDate": "2026-10-15",
+    "stage": "148011373",
+    "surrender": ""
+   }
+  },
+  "52097875479": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "24184-Ortega",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "RICARDO MARIO ORTEGA",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-12",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "54341969550": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "23609-Yang",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "YOUNG MIN YANG",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-12",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "55155984691": {
+   "firstProcessed": "2026-10-19",
+   "snap": {
+    "checksDate": "",
+    "coordId": "96292761",
+    "matter": "24164-Mutikdaktsang",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "TENZIN CHOEPHEL MUTIKDAKTSANG",
+    "review": "Manual (No SMS)",
+    "reviewedDate": "2026-10-12",
+    "stage": "1072094529",
+    "surrender": "2026-09-30"
+   }
+  },
+  "57388259936": {
+   "firstProcessed": "2026-10-20",
+   "snap": {
+    "checksDate": "2026-10-07",
+    "coordId": "253228014",
+    "matter": "24126-Quiroa",
+    "mfr": "TESLA",
+    "mfrFull": "Tesla, Inc.",
+    "plaintiff": "REYNALDO QUIROA",
+    "review": "Complete",
+    "reviewedDate": "2026-10-19",
+    "stage": "1072094529",
+    "surrender": "2026-09-28"
+   }
+  }
+ },
+ "manual": {}
+}

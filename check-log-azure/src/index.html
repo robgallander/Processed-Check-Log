@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Assigned &amp; Processed Check Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F5F7; --card:#FFFFFF; --ink:#141B26; --muted:#5B6472; --faint:#8A929E;
+  --line:#E2E5EA; --line2:#EDF0F3; --accent:#1F5F8B; --accent-soft:#E6EEF5;
+  --warn:#9A4A14; --warn-ink:#6E3510; --warn-bg:#FBF3EA; --warn-line:#E8C9A8;
+  --good:#2F6B3F; --good-bg:#E5F0E8; --bad:#A3282C; --bad-bg:#F8E3E3; --row-hover:#F1F5F9;
+  --hi-bg:#FBEBDD; --hi-ink:#8A3F0C; --pri-bg:#E6EEF5; --pri-ink:#1F5F8B; --med-bg:#EFEBF8; --med-ink:#4D3D86; --low-bg:#EEF0F2; --low-ink:#5B6472;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F141B; --card:#171E27; --ink:#E7EBF0; --muted:#A1AAB6; --faint:#76808C;
+    --line:#2A333F; --line2:#222A35; --accent:#6FA8D6; --accent-soft:#1E2C3A;
+    --warn:#E39A62; --warn-ink:#F0C29E; --warn-bg:#2B1E14; --warn-line:#5A3A22;
+    --good:#7CC08E; --good-bg:#18291E; --bad:#F08A8D; --bad-bg:#341A1C; --row-hover:#1D2631;
+    --hi-bg:#33231A; --hi-ink:#F0B48A; --pri-bg:#1E2C3A; --pri-ink:#8FBDE2; --med-bg:#272238; --med-ink:#BFB2EE; --low-bg:#20262E; --low-ink:#A1AAB6;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F141B; --card:#171E27; --ink:#E7EBF0; --muted:#A1AAB6; --faint:#76808C;
+  --line:#2A333F; --line2:#222A35; --accent:#6FA8D6; --accent-soft:#1E2C3A;
+  --warn:#E39A62; --warn-ink:#F0C29E; --warn-bg:#2B1E14; --warn-line:#5A3A22;
+  --good:#7CC08E; --good-bg:#18291E; --bad:#F08A8D; --bad-bg:#341A1C; --row-hover:#1D2631;
+  --hi-bg:#33231A; --hi-ink:#F0B48A; --pri-bg:#1E2C3A; --pri-ink:#8FBDE2; --med-bg:#272238; --med-ink:#BFB2EE; --low-bg:#20262E; --low-ink:#A1AAB6;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif}
+.mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace}
+.wrap{max-width:1640px;margin:0 auto;padding:28px 20px 48px;display:flex;flex-direction:column;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+header .eyebrow{font-size:13px;font-weight:600;color:var(--muted)}
+header h1{margin:2px 0 0;font-size:34px;line-height:1.15;font-weight:700;letter-spacing:-.01em}
+.head-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+.live{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--faint);flex:none}
+.dot.live{background:var(--good)} .dot.stale{background:var(--warn)}
+button{font:inherit;color:inherit;cursor:pointer}
+.btn{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:13px}
+.btn:hover{border-color:var(--accent)}
+.btn:disabled{opacity:.6;cursor:default}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.note{font-size:13px;border-radius:8px;padding:10px 12px;background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink)}
+
+.tabbar{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tabbtn{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.tabbtn:hover{border-color:var(--accent)}
+.tabbtn[aria-selected="true"]{background:var(--accent-soft);border-color:var(--accent);box-shadow:inset 0 -3px 0 var(--accent)}
+.tabbtn .t{font-size:17px;font-weight:600}
+.tabbtn .d{font-size:13px;color:var(--muted)}
+.tabbtn .c{font:600 30px/1 'IBM Plex Mono',ui-monospace,monospace;color:var(--accent)}
+
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.kpi .lbl{font-size:13px;font-weight:500;color:var(--muted)}
+.kpi .val{font:600 30px/1.2 'IBM Plex Mono',ui-monospace,monospace;margin:6px 0 2px}
+.kpi .sub{font-size:13px;color:var(--muted)}
+.kpi.bad .val{color:var(--bad)} .kpi.hi .val{color:var(--hi-ink)} .kpi.warn .val{color:var(--warn)} .kpi.good .val{color:var(--good)}
+
+.table-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:14px}
+.table-head h2{margin:0;font-size:17px;font-weight:600}
+.table-head .sub{font-size:13px;color:var(--muted)}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.controls select,.controls input[type=search]{font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+.controls input[type=search]{width:240px;max-width:100%}
+.tbl-scroll{overflow:auto;border:1px solid var(--line);border-radius:8px;max-height:72vh}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13.5px}
+thead th{position:sticky;top:0;z-index:2;background:var(--line2);text-align:left;font-size:12px;font-weight:600;color:var(--muted);padding:0;white-space:nowrap;border-bottom:1px solid var(--line)}
+thead th button{background:none;border:0;padding:10px 10px;width:100%;text-align:left;font-weight:600;color:inherit;display:flex;gap:4px;align-items:center}
+thead th button:hover{color:var(--ink)}
+thead th .arr{font-size:10px;opacity:.8}
+thead th.static{padding:10px 10px}
+tbody td{padding:6px 10px;border-bottom:1px solid var(--line2);vertical-align:middle;white-space:nowrap}
+tbody tr:hover td{background:var(--row-hover)}
+td.plt{white-space:normal;min-width:200px;max-width:280px;font-weight:600}
+td.ctr{text-align:center}
+td a{color:var(--accent);text-decoration:none} td a:hover{text-decoration:underline}
+.mat{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13px}
+.box{display:inline-flex;width:18px;height:18px;border-radius:4px;border:1.5px solid var(--faint);align-items:center;justify-content:center;font-size:12px;line-height:1}
+.box.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12.5px;font-weight:500}
+.pill.exc{background:var(--accent-soft);color:var(--accent)} .pill.inc{background:var(--line2);color:var(--muted)}
+.def{font-weight:600;font-size:12.5px}
+.cc{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12.5px;font-weight:600;background:var(--accent-soft);color:var(--accent)}
+.muted{color:var(--faint)}
+.cell-sel,.cell-in{font:inherit;font-size:13px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:4px 6px}
+.cell-sel:hover,.cell-in:hover{border-color:var(--accent)}
+.cell-sel:disabled,.cell-in:disabled{opacity:1;cursor:default;border-color:transparent;background:transparent;-webkit-appearance:none;appearance:none}
+.cell-in.date{width:138px}
+.cell-in.notes{width:240px}
+.cell-in.defaulted,.cell-sel.defaulted{color:var(--muted)}
+.cell-sel.st-urgent{background:var(--bad-bg);color:var(--bad);border-color:transparent;font-weight:600}
+.cell-sel.st-high{background:var(--hi-bg);color:var(--hi-ink);border-color:transparent;font-weight:600}
+.cell-sel.st-priority{background:var(--pri-bg);color:var(--pri-ink);border-color:transparent}
+.cell-sel.st-medium{background:var(--med-bg);color:var(--med-ink);border-color:transparent}
+.cell-sel.st-low{background:var(--low-bg);color:var(--low-ink);border-color:transparent}
+.cell-sel.lh-yes{background:var(--good-bg);color:var(--good);border-color:transparent}
+.cell-sel.lh-no{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.cell-sel.lh-title{background:var(--med-bg);color:var(--med-ink);border-color:transparent}
+.cell-sel.lh-ck{background:var(--hi-bg);color:var(--hi-ink);border-color:transparent}
+.cell-in.txt{width:150px}
+.cell-in.def-in{width:90px}
+.cell-in.plt-in{width:220px}
+.cell-chk{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+.tag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:600;background:var(--hi-bg);color:var(--hi-ink);vertical-align:middle}
+.del{background:none;border:1px solid transparent;border-radius:6px;padding:3px 8px;font-size:12.5px;color:var(--bad)}
+.del:hover{border-color:var(--bad)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.btn.primary:hover{filter:brightness(1.08)}
+:root{--chip-gray:#E8EAED;--chip-green-bg:#D4EDBC;--chip-green-ink:#11734B;--chip-purple-bg:#E6CFF2;--chip-purple-ink:#5A3286;--chip-yellow-bg:#FFE5A0;--chip-yellow-ink:#473821}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--chip-gray:#2A333F;--chip-green-bg:#1F3A24;--chip-green-ink:#9BD8A6;--chip-purple-bg:#3A2850;--chip-purple-ink:#D7B8F0;--chip-yellow-bg:#4A3B14;--chip-yellow-ink:#FFDE8A}}
+:root[data-theme="dark"]{--chip-gray:#2A333F;--chip-green-bg:#1F3A24;--chip-green-ink:#9BD8A6;--chip-purple-bg:#3A2850;--chip-purple-ink:#D7B8F0;--chip-yellow-bg:#4A3B14;--chip-yellow-ink:#FFDE8A}
+.cell-sel.chip{border:0;border-radius:999px;padding:3px 10px;min-width:130px;background:var(--chip-gray);color:var(--ink)}
+.cell-sel.chip:hover{box-shadow:0 0 0 1px var(--accent)}
+.cell-sel.ty-68{background:var(--chip-purple-bg);color:var(--chip-purple-ink)}
+.cell-sel.ty-998{background:var(--chip-green-bg);color:var(--chip-green-ink)}
+.cell-sel.dn-done{background:var(--chip-green-bg);color:var(--chip-green-ink)}
+.cell-sel.dn-partial{background:var(--chip-yellow-bg);color:var(--chip-yellow-ink)}
+.tag.arch{background:var(--line2);color:var(--muted)}
+.btn.sm{padding:3px 10px;font-size:12.5px;white-space:nowrap}
+.del.undo{color:var(--accent)}
+.del.undo:hover{border-color:var(--accent)}
+.saving{outline:2px solid var(--warn);outline-offset:1px}
+.cur{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12.5px;font-weight:600}
+.cur.complete{background:var(--good-bg);color:var(--good)} .cur.manual{background:var(--hi-bg);color:var(--hi-ink)}
+.empty{padding:28px 16px;text-align:center;color:var(--muted);font-size:14px}
+.caption{font-size:13px;color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;font-size:13px;z-index:20;max-width:90vw}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.kpis{grid-template-columns:1fr}.tabbar{grid-template-columns:1fr}header h1{font-size:28px}}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Quill &amp; Arrow · Settlement checks</div>
+    <div class="head-row">
+      <h1>Assigned &amp; Processed Check Log</h1>
+      <div class="live"><span class="dot" id="liveDot"></span><span id="liveText">Connecting to HubSpot…</span><button class="btn" id="refreshBtn" type="button">Refresh</button><span id="who"></span><a class="btn" href="/.auth/logout?post_logout_redirect_uri=/" style="text-decoration:none">Sign out</a></div>
+    </div>
+  </header>
+
+  <div id="pageErr"></div>
+
+  <div class="tabbar" role="tablist" aria-label="Check log views">
+    <button class="tabbtn" role="tab" id="tab-assigned" aria-selected="true" aria-controls="panel" data-tab="assigned">
+      <span><span class="t">Assigned Checks</span><br><span class="d">Pending Settlement Funds, not yet processed</span></span><span class="c" id="cntAssigned">—</span>
+    </button>
+    <button class="tabbtn" role="tab" id="tab-processed" aria-selected="false" aria-controls="panel" data-tab="processed">
+      <span><span class="t" id="procTitle">Processed Check Log</span><br><span class="d" id="procDesc">Complete or Manual (No SMS), by Checks Received Date year</span></span><span class="c" id="cntProcessed">—</span>
+    </button>
+  </div>
+
+  <section class="kpis" id="kpis" aria-label="Summary"></section>
+
+  <section class="card" id="panel" role="tabpanel">
+    <div class="table-head">
+      <div><h2 id="tblTitle">Assigned checks</h2><div class="sub" id="showing"></div></div>
+      <div class="controls">
+        <label class="sr" for="fCoord">Assigned to</label>
+        <select id="fCoord"></select>
+        <label class="sr" for="fStatus">Status</label>
+        <select id="fStatus"></select>
+        <label class="sr" for="fType">Check type</label>
+        <select id="fType"></select>
+        <label class="sr" for="fYear">Year</label>
+        <select id="fYear" hidden></select>
+        <label class="sr" for="q">Search</label>
+        <input type="search" id="q" placeholder="Matter, plaintiff, or defendant">
+        <button class="btn primary" type="button" id="addRow">Add row</button>
+      </div>
+    </div>
+    <div id="editNote"></div>
+    <div id="tableWrap"></div>
+  </section>
+
+  <div class="caption" id="sourceNote">Source: HubSpot deals in Pending Settlement Funds (BB) and (CK). Checks Received = Checks Received Date, Email Sent = Checks Received, Type of Offer = Fees by Motion (Yes = Exclusive, No = Inclusive), Address Confirmed = Clio Address Confirmed, Assigned To = Check Coordinator. Added to List defaults to the date the deal entered its current Pending Settlement Funds stage. Added to List, Check Type, Lienholder Copy, Dispatch, Status, and Notes are kept on this page and shared with everyone who opens it. On the Processed Check Log, Month defaults to HubSpot’s Checks Reviewed Date, and processed deals stay listed after they leave Pending Settlement Funds (tagged Moved on). Each year has its own log (pick the year above the table): it includes every deal, in any stage, with a Checks Received Date in that year and Checks Under Review = Complete or Manual (No SMS). Manual rows go in the year of their Month. Rows marked Manual were added on this page for checks not tied to HubSpot; Fees, Wire, Overages, and FDO Costs rows can be marked complete with the Mark complete button, which moves them to the Processed Check Log.</div>
+</div>
+<div id="toast" class="toast" hidden role="status"></div>
+
+<script>
+(function(){
+"use strict";
+/* ---------- config ---------- */
+const HS = "HubSpot", SEARCH = "search_crm_objects", OWNERS = "search_owners";
+const PORTAL = "8854200";
+const DEAL_URL = id => "https://app.hubspot.com/contacts/" + PORTAL + "/record/0-3/" + id;
+const INSIGHTS = { userIntent: "View the firm's assigned and processed settlement check log", satisfaction: "NEUTRAL" };
+const STAGE_BB = "1072094529", STAGE_CK = "148011373";
+const PROPS = ["dealname","clio_matter","dealstage","checks_received","fees_by_motion","clio_address_confirmed","surrender_date","plaintiff_name_short","car_manufacturer__cloned_","check_coordinator","checks_under_review","checks_received_date","checks_reviewed_date","hs_v2_date_entered_" + STAGE_BB,"hs_v2_date_entered_" + STAGE_CK];
+const PROCESSED_VALUES = ["Complete","Manual (No SMS)"];
+const REFRESH_MS = 10 * 60 * 1000, STALE_MS = 5 * 60 * 1000;
+const DENIALS = ["needs_reauth","server_not_connected","not_in_manifest","blocked_by_policy","approval_required","not_granted","capability_disabled","capability_removed","selection_required","consent_required"];
+
+const CHECK_TYPES = ["BB","CK-GM","Fees","CK-i","CK-FMB","Wire","Overages","FDO Costs","Supp"];
+const LIEN = [["Yes","lh-yes"],["No","lh-no"],["Title","lh-title"],["C&K","lh-ck"]];
+const COL10 = ["PUDS","No Checks","Wire Transfer","OC Request","See Notes"];
+const STATUSES = [["Urgent/Escalated","st-urgent"],["High","st-high"],["Priority","st-priority"],["Medium Priority","st-medium"],["Low Priority","st-low"]];
+const COMPLETABLE = ["Fees","Wire","Overages","FDO Costs"];
+const OFFER_KINDS = [["Rule 68 - Federal","ty-68"],["998 - State","ty-998"]];
+const DONE = [["Done","dn-done"],["Partial","dn-partial"]];
+const FIRST_YEAR = 2026;
+const STATUS_RANK = Object.fromEntries(STATUSES.map((s,i) => [s[0], i]));
+
+const MFR = [[/general motors|\bgmc?\b|chevrolet|cadillac|buick/i,"GM"],[/fca|chrysler|stellantis|jeep|dodge|\bram\b/i,"FCA"],[/mercedes/i,"MBUSA"],[/\bbmw\b|mini usa/i,"BMW"],[/volvo/i,"VCNA"],[/ford|lincoln/i,"FMC"],[/nissan|infiniti/i,"NNA"],[/\bkia\b/i,"KIA"],[/genesis/i,"GMA"],[/hyundai/i,"HMA"],[/tesla/i,"TESLA"],[/toyota|lexus/i,"TMS"],[/honda|acura/i,"AHM"],[/subaru/i,"SOA"],[/porsche/i,"PCNA"],[/volkswagen|\baudi\b/i,"VWGoA"],[/jaguar|land rover/i,"JLRNA"],[/mazda/i,"MNAO"],[/mitsubishi/i,"MMNA"],[/polestar/i,"POLESTAR"],[/aston martin/i,"ASTON MARTIN"],[/rivian/i,"RIVIAN"],[/lucid/i,"LUCID"]];
+const mfrCode = s => { if(!s) return ""; for(const [re,c] of MFR) if(re.test(s)) return c; return s; };
+
+/* ---------- state ---------- */
+const S = { tab: "assigned", deals: null, loadStatus: "loading", err: null, storedAt: null, owners: {}, edits: {}, manual: {}, focusNew: null, dbReady: false, canWrite: true,
+  limit: 200, year: Math.max(FIRST_YEAR, new Date().getFullYear()), byYear: {}, yearStatus: {}, yearErr: {}, sort: { assigned: { key: "received", dir: -1 }, processed: { key: "month", dir: -1 } }, q: "", coord: "", status: "", type: "" };
+let mcp = null, db = null, user = null, pendingRender = false;
+
+/* ---------- helpers ---------- */
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pad = n => String(n).padStart(2,"0");
+const todayIso = () => { const d = new Date(); return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()); };
+const localIso = ts => { if(!ts) return ""; const d = new Date(ts); if(isNaN(d)) return ""; return d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()); };
+const fmtDate = s => { if(!s) return ""; const p = s.slice(0,10).split("-"); return Number(p[1]) + "/" + Number(p[2]) + "/" + p[0]; };
+function parsePayload(r){
+  if(!r) return null; let p = r.payload;
+  if(typeof p === "string"){ try{ p = JSON.parse(p); }catch(e){ p = null; } }
+  if(!p && r.structuredContent) p = r.structuredContent;
+  if(!p && Array.isArray(r.content)){ const t = r.content.find(b => b.type === "text"); if(t){ try{ p = JSON.parse(t.text); }catch(e){} } }
+  return p;
+}
+function errMessage(e){
+  switch(e && e.code){
+    case "needs_reauth": return "Your sign-in has expired. Reload the page to sign in again.";
+    case "permission_denied": return "You have view-only access, so changes can't be saved.";
+    case "rate_limited": return "HubSpot is busy right now. Showing the last data received; it will try again on the next refresh.";
+    case "config_error": return "The site isn't fully set up: " + ((e && e.message) || "a setting is missing") + ". Ask the site administrator to check the Azure environment variables.";
+    case "upstream_error": return "HubSpot didn't respond (" + ((e && e.message) || "unknown error") + "). Showing the last data received; it will try again on the next refresh.";
+    default: return (e && e.message) || "Couldn't reach HubSpot.";
+  }
+}
+const isDenial = e => e && DENIALS.includes(e.code);
+const ago = ts => { if(!ts) return ""; const s = Math.max(0, Math.round((Date.now()-ts)/1000)); if(s < 60) return "just now"; const m = Math.round(s/60); if(m < 60) return m + " min ago"; return Math.round(m/60) + " hr ago"; };
+let toastTimer = null;
+function toast(msg){ const t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => { t.hidden = true; }, 4000); }
+
+function shortName(full){
+  if(!full) return "";
+  const parts = full.trim().split(/\s+/);
+  return parts.length > 1 ? parts[0] + " " + parts[parts.length-1][0] + "." : parts[0];
+}
+const coordLabel = r => r.coordId ? (S.owners[r.coordId] ? shortName(S.owners[r.coordId]) : "#" + r.coordId) : "";
+
+function normDeal(r){
+  const p = r.properties || {};
+  const stage = p.dealstage || "";
+  const enteredBB = localIso(p["hs_v2_date_entered_" + STAGE_BB]);
+  const enteredCK = localIso(p["hs_v2_date_entered_" + STAGE_CK]);
+  const entered = stage === STAGE_BB ? (enteredBB || enteredCK) : (enteredCK || enteredBB);
+  const fbm = (p.fees_by_motion || "").toLowerCase();
+  return {
+    id: String(r.id || p.hs_object_id || ""),
+    matter: (p.clio_matter || "").trim(),
+    deal: p.dealname || "",
+    stage, stageLabel: stage === STAGE_BB ? "BB" : "CK",
+    checksReceived: String(p.checks_received) === "true",
+    offer: fbm === "yes" ? "Exclusive" : fbm === "no" ? "Inclusive" : "",
+    addrConfirmed: (p.clio_address_confirmed || "").toLowerCase() === "confirmed",
+    surrender: (p.surrender_date || "").slice(0,10),
+    checksDate: (p.checks_received_date || "").slice(0,10),
+    reviewedDate: (p.checks_reviewed_date || "").slice(0,10),
+    plaintiff: (p.plaintiff_name_short || "").trim() || (p.dealname || "").split(/\s+V\.?\s+/i)[0],
+    mfrFull: p.car_manufacturer__cloned_ || "",
+    mfr: mfrCode(p.car_manufacturer__cloned_ || ""),
+    coordId: p.check_coordinator ? String(p.check_coordinator).split(";")[0] : "",
+    review: p.checks_under_review || "",
+    entered
+  };
+}
+const isProcessed = d => PROCESSED_VALUES.includes(d.review);
+
+/* merged view of a deal: HubSpot fields + page-kept fields */
+function view(d){
+  const e = S.edits[d.id] || {};
+  return Object.assign({}, d, {
+    received: e.received || d.entered || "",
+    receivedOverridden: !!e.received,
+    checkType: e.checkType != null ? e.checkType : (d.stage === STAGE_BB ? "BB" : ""),
+    checkTypeDefaulted: e.checkType == null && d.stage === STAGE_BB,
+    lien: e.lien || "", col10: e.col10 || "", status: e.status || "", notes: e.notes || "",
+    month: e.month || d.reviewedDate || e.firstProcessed || d.checksDate || "", monthOverridden: !!e.month,
+    offerKind: e.offerKind || "", done: e.done || "", rfd: e.rfd || "", rfdDate: e.rfdDate || ""
+  });
+}
+
+/* ---------- HubSpot ---------- */
+const PSF_FILTER = [{ filters:[{ propertyName:"dealstage", operator:"IN", values:[STAGE_BB, STAGE_CK] }] }];
+const yearFilter = y => [{ filters:[{ propertyName:"checks_received_date", operator:"GTE", value: y + "-01-01" }, { propertyName:"checks_received_date", operator:"LT", value: (y + 1) + "-01-01" }, { propertyName:"checks_under_review", operator:"IN", values: PROCESSED_VALUES }] }];
+async function loadYear(y, force){
+  if(!mcp) return;
+  S.yearStatus[y] = S.byYear[y] ? "refreshing" : "loading"; requestRender();
+  try{
+    const x = await fetchAll(yearFilter(y), force);
+    S.byYear[y] = x.rows; S.yearStatus[y] = "ok";
+    lookupOwners(x.rows);
+  }catch(e){ S.yearStatus[y] = "error"; S.yearErr[y] = e; }
+  requestRender();
+}
+const searchInput = (groups, offset) => ({ objectType:"DEAL", properties: PROPS, limit: 200, offset: offset || undefined, chatInsights: INSIGHTS,
+  sorts:[{ propertyName:"hs_object_id", direction:"DESCENDING" }], filterGroups: groups });
+
+async function fetchAll(groups, force){
+  let offset = 0, all = [], total = null, stored = null;
+  for(let page = 0; page < 40; page++){
+    const res = await mcp.callTool(HS, SEARCH, searchInput(groups, offset), { cache: force ? { refresh: true, staleTime: STALE_MS } : { staleTime: STALE_MS } });
+    const p = parsePayload(res) || {};
+    const got = Array.isArray(p.results) ? p.results : [];
+    if(res && res.cache && res.cache.storedAt) stored = stored ? Math.min(stored, res.cache.storedAt) : res.cache.storedAt;
+    all = all.concat(got);
+    total = typeof p.total === "number" ? p.total : all.length;
+    if(!got.length || all.length >= total || typeof p.offset !== "number" || p.offset <= offset) break;
+    offset = p.offset;
+  }
+  const seen = new Set(), rows = [];
+  all.forEach(r => { const d = normDeal(r); if(d.id && !seen.has(d.id)){ seen.add(d.id); rows.push(d); } });
+  return { rows, storedAt: stored || Date.now() };
+}
+
+async function load(force){
+  if(!mcp) return;
+  S.loadStatus = S.deals ? "refreshing" : "loading"; renderStatus();
+  try{
+    const r = await fetchAll(PSF_FILTER, force);
+    S.deals = r.rows; S.storedAt = r.storedAt; S.loadStatus = "ok"; S.err = null;
+    lookupOwners(r.rows);
+    syncSnapshots();
+  }catch(e){
+    S.err = e; S.loadStatus = S.deals && !isDenial(e) ? "stale" : "error";
+    if(isDenial(e)) S.deals = null;
+    requestRender(); return;
+  }
+  requestRender();
+  const years = new Set([S.year].concat(Object.keys(S.byYear).map(Number)));
+  for(const y of years) await loadYear(y, force);
+}
+
+let ownerQueue = new Set(), ownerTimer = null;
+function lookupOwners(rows){
+  rows.forEach(r => { if(r.coordId && !(r.coordId in S.owners)) ownerQueue.add(r.coordId); });
+  if(!ownerQueue.size || ownerTimer) return;
+  ownerTimer = setTimeout(async () => {
+    ownerTimer = null;
+    const ids = Array.from(ownerQueue); ownerQueue = new Set();
+    for(let i = 0; i < ids.length; i += 100){
+      const chunk = ids.slice(i, i+100);
+      try{
+        const res = await mcp.callTool(HS, OWNERS, { ownerIds: chunk.map(Number).filter(n => !isNaN(n)), limit: 100 }, { cache: { staleTime: 24*60*60*1000 } });
+        const p = parsePayload(res) || {};
+        (p.owners || []).forEach(o => { S.owners[String(o.ownerId)] = o.name || ""; });
+      }catch(e){ /* labels fall back to the id */ }
+    }
+    requestRender();
+  }, 50);
+}
+
+/* ---------- shared edits ---------- */
+async function save(id, field, value, el){
+  if(!db){ toast("Edits can't be saved in this view. Open the check log from its claude.ai link."); return; }
+  if(el) el.classList.add("saving");
+  const body = { [field]: value, updatedAt: new Date().toISOString() };
+  try{
+    if(S.edits[id]) await db.doc("checks/" + id).update(body);
+    else await db.doc("checks/" + id).set(body);
+  }catch(e){
+    try{ await db.doc("checks/" + id).set(Object.assign({}, S.edits[id] || {}, body)); }
+    catch(e2){ toast(e2 && (e2.code === "permission_denied" || e2.code === "not_granted") ? "You have view-only access, so your change wasn't saved." : "Couldn't save the change: " + ((e2 && (e2.message || e2.code)) || "unknown error")); requestRender(true); }
+  }finally{ if(el) el.classList.remove("saving"); }
+}
+
+/* Keep a copy of each processed HubSpot deal so it stays in the log after it leaves Pending Settlement Funds. */
+let syncing = false;
+async function syncSnapshots(){
+  if(syncing || !db || !S.canWrite || !S.dbReady || !S.deals) return;
+  syncing = true;
+  try{
+    for(const d of S.deals){
+      const e = S.edits[d.id] || {};
+      if(isProcessed(d)){
+        const sn = { matter: d.matter, plaintiff: d.plaintiff, mfr: d.mfr, mfrFull: d.mfrFull, coordId: d.coordId, review: d.review, reviewedDate: d.reviewedDate, checksDate: d.checksDate, surrender: d.surrender, stage: d.stage };
+        const old = e.snap || {};
+        if(Object.keys(sn).some(k => (old[k] || "") !== (sn[k] || ""))){
+          const body = { snap: sn };
+          if(!e.firstProcessed) body.firstProcessed = todayIso();
+          try{ if(S.edits[d.id]) await db.doc("checks/" + d.id).update(body); else await db.doc("checks/" + d.id).set(body); }
+          catch(err){ if(err && (err.code === "permission_denied" || err.code === "not_granted")) break; }
+        }
+      }else if(e.snap){
+        try{ await db.doc("checks/" + d.id).update({ snap: null }); }catch(err){}
+      }
+    }
+  }finally{ syncing = false; }
+}
+
+/* ---------- rendering ---------- */
+function requestRender(force){
+  const a = document.activeElement;
+  if(!force && a && $("tableWrap").contains(a) && (a.tagName === "INPUT" || a.tagName === "SELECT")){ pendingRender = true; return; }
+  pendingRender = false; renderAll();
+}
+
+function renderStatus(){
+  const dot = $("liveDot"), txt = $("liveText");
+  dot.className = "dot";
+  if(!mcp && S.loadStatus === "error"){ txt.textContent = "Not connected"; }
+  else if(S.loadStatus === "loading"){ txt.textContent = "Loading from HubSpot…"; }
+  else if(S.loadStatus === "refreshing"){ dot.classList.add("live"); txt.textContent = "Refreshing…"; }
+  else if(S.loadStatus === "ok"){ dot.classList.add("live"); txt.textContent = "Synced from HubSpot · loaded " + ago(S.storedAt); }
+  else if(S.loadStatus === "stale"){ dot.classList.add("stale"); txt.textContent = "Showing data from " + ago(S.storedAt) + " · HubSpot didn't respond"; }
+  else { txt.textContent = "Couldn't load HubSpot"; }
+  $("refreshBtn").disabled = !mcp || S.loadStatus === "loading" || S.loadStatus === "refreshing";
+}
+
+function manualRow(id, m){
+  return { id, manual: true, matter: m.matter || "", deal: "", stage: "", stageLabel: "", checksReceived: !!m.emailSent, offer: m.offer || "",
+    addrConfirmed: !!m.addrConfirmed, surrender: m.surrender || "", checksDate: m.checksDate || "", plaintiff: m.plaintiff || "",
+    mfrFull: m.defendant || "", mfr: m.defendant || "", coordId: m.coordId || "", review: m.review || "", entered: "",
+    received: m.received || "", receivedOverridden: true, checkType: m.checkType || "", checkTypeDefaulted: false,
+    lien: m.lien || "", col10: m.col10 || "", status: m.status || "", notes: m.notes || "",
+    month: m.month || "", monthOverridden: true, offerKind: m.offerKind || "", done: m.done || "", rfd: m.rfd || "", rfdDate: m.rfdDate || "" };
+}
+/* Which year's log a processed check belongs to: HubSpot deals by Checks Received Date, manual rows by Month. */
+function rowYear(d){
+  const src = d.manual ? (d.month || d.checksDate || d.received) : (d.checksDate || d.month || d.received);
+  const y = parseInt(String(src || "").slice(0,4), 10);
+  return isNaN(y) ? new Date().getFullYear() : y;
+}
+function lists(){
+  const psfIds = new Set((S.deals || []).map(d => d.id));
+  const live = (S.deals || []).concat((S.byYear[S.year] || []).filter(d => !psfIds.has(d.id))).map(view);
+  const liveIds = new Set(live.map(d => d.id));
+  const archived = S.deals ? Object.entries(S.edits).filter(([id,e]) => e.snap && !liveIds.has(id)).map(([id,e]) => {
+    const sn = e.snap;
+    return Object.assign(view({ id, matter: sn.matter || "", deal: "", stage: sn.stage || "", stageLabel: "", checksReceived: false, offer: "", addrConfirmed: false,
+      surrender: sn.surrender || "", checksDate: sn.checksDate || "", reviewedDate: sn.reviewedDate || "", plaintiff: sn.plaintiff || "", mfrFull: sn.mfrFull || "", mfr: sn.mfr || "",
+      coordId: sn.coordId || "", review: sn.review || "", entered: "" }), { archived: true });
+  }) : [];
+  const all = live.concat(archived, Object.entries(S.manual).map(([id,m]) => manualRow(id, m)));
+  return { assigned: all.filter(d => !isProcessed(d)), processed: all.filter(d => isProcessed(d) && rowYear(d) === S.year) };
+}
+
+function filtered(rows){
+  const q = S.q.trim().toLowerCase();
+  return rows.filter(d => {
+    if(S.coord === "__none" ? d.coordId : (S.coord && d.coordId !== S.coord)) return false;
+    const fa = S.tab === "assigned" ? d.status : d.done, fb = S.tab === "assigned" ? d.checkType : d.offerKind;
+    if(S.status === "__none" ? fa : (S.status && fa !== S.status)) return false;
+    if(S.type === "__none" ? fb : (S.type && fb !== S.type)) return false;
+    if(q && !(d.matter + " " + d.plaintiff + " " + d.mfr + " " + d.mfrFull + " " + d.deal).toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+const SORTERS = {
+  received: d => d.received || "", matter: d => d.matter.toLowerCase(), surrender: d => d.surrender || "", checksDate: d => d.checksDate || "",
+  plaintiff: d => d.plaintiff.toLowerCase(), mfr: d => d.mfr.toLowerCase(), status: d => d.status ? STATUS_RANK[d.status] : 99,
+  coord: d => coordLabel(d).toLowerCase() || "~", checkType: d => d.checkType || "~", review: d => d.review,
+  month: d => d.month || "", offerKind: d => d.offerKind || "~", done: d => d.done || "~", rfd: d => (d.rfd || "").toLowerCase() || "~", rfdDate: d => d.rfdDate || ""
+};
+function sorted(rows){
+  const s = S.sort[S.tab], f = SORTERS[s.key] || SORTERS.received;
+  return rows.slice().sort((a,b) => { const x = f(a), y = f(b); if(x === y) return a.matter < b.matter ? -1 : 1; const blankX = x === "" , blankY = y === ""; if(blankX !== blankY) return blankX ? 1 : -1; return (x < y ? -1 : 1) * s.dir; });
+}
+
+function renderAll(){
+  renderStatus();
+  const err = $("pageErr");
+  err.innerHTML = (S.err && (S.loadStatus === "error" || S.loadStatus === "stale")) ? '<div class="note">' + esc(errMessage(S.err)) + '</div>' : "";
+  const L = lists();
+  $("cntAssigned").textContent = S.deals ? L.assigned.length : "—";
+  $("cntProcessed").textContent = S.deals ? L.processed.length : "—";
+  document.querySelectorAll(".tabbtn").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === S.tab ? "true" : "false"));
+  renderControls(L);
+  renderKpis(L);
+  renderTable(L);
+}
+
+function renderControls(L){
+  const fy = $("fYear"), nowY = Math.max(FIRST_YEAR, new Date().getFullYear()), ys = [];
+  for(let y = nowY; y >= FIRST_YEAR; y--) ys.push(y);
+  fy.innerHTML = ys.map(y => '<option value="' + y + '"' + (y === S.year ? " selected" : "") + '>' + y + ' log</option>').join("");
+  fy.hidden = S.tab !== "processed";
+  $("procTitle").textContent = "Processed Check Log " + S.year;
+  $("procDesc").textContent = "Complete or Manual (No SMS) with a " + S.year + " Checks Received Date" + (S.year === nowY ? ", plus anything processed in Pending Settlement Funds" : "");
+  const rows = S.tab === "assigned" ? L.assigned : L.processed;
+  const coords = {};
+  rows.forEach(d => { if(d.coordId) coords[d.coordId] = coordLabel(d); });
+  const opts = (sel, cur, items, allLbl, noneLbl) => {
+    sel.innerHTML = '<option value="">' + esc(allLbl) + '</option>' + items.map(([v,l]) => '<option value="' + esc(v) + '"' + (v === cur ? " selected" : "") + '>' + esc(l) + '</option>').join("") + '<option value="__none"' + (cur === "__none" ? " selected" : "") + '>' + esc(noneLbl) + '</option>';
+  };
+  opts($("fCoord"), S.coord, Object.entries(coords).sort((a,b) => a[1].localeCompare(b[1])), "Assigned to: anyone", "Not assigned");
+  if(S.tab === "assigned"){
+    opts($("fStatus"), S.status, STATUSES.map(s => [s[0], s[0]]), "Status: any", "No status");
+    opts($("fType"), S.type, CHECK_TYPES.map(t => [t,t]), "Check type: any", "No check type");
+  }else{
+    opts($("fStatus"), S.status, DONE.map(s => [s[0], s[0]]), "Check type: any", "No check type");
+    opts($("fType"), S.type, OFFER_KINDS.map(s => [s[0], s[0]]), "Type: any", "No type");
+  }
+  $("q").value = S.q;
+}
+
+function renderKpis(L){
+  const k = $("kpis");
+  if(!S.deals){ k.innerHTML = ""; return; }
+  const kpi = (cls, lbl, val, sub) => '<div class="card kpi ' + cls + '"><div class="lbl">' + esc(lbl) + '</div><div class="val">' + esc(val) + '</div><div class="sub">' + esc(sub) + '</div></div>';
+  if(S.tab === "assigned"){
+    const a = L.assigned;
+    const urgent = a.filter(d => d.status === "Urgent/Escalated").length, high = a.filter(d => d.status === "High").length;
+    const sent = a.filter(d => d.checksReceived).length, noAddr = a.filter(d => !d.addrConfirmed).length, noCC = a.filter(d => !d.coordId).length;
+    k.innerHTML = kpi("bad","Urgent / escalated", urgent, "Status set on this page") + kpi("hi","High", high, "Status set on this page") +
+      kpi("good","Email sent", sent, "of " + a.length + " · Checks Received = Yes") + kpi("warn","Address not confirmed", noAddr, "Clio Address Confirmed ≠ Confirmed") +
+      kpi("","Not assigned", noCC, "No Check Coordinator in HubSpot");
+  }else{
+    const p = L.processed;
+    const comp = p.filter(d => d.review === "Complete").length, man = p.filter(d => d.review === "Manual (No SMS)").length;
+    const done = p.filter(d => d.done === "Done").length, part = p.filter(d => d.done === "Partial").length, arch = p.filter(d => d.archived || (!d.manual && d.stage !== STAGE_BB && d.stage !== STAGE_CK)).length;
+    k.innerHTML = kpi("good","Done", done, "Check Type set on this page") + kpi("hi","Partial", part, "Check Type set on this page") +
+      kpi("","Complete", comp, "Checks Under Review") + kpi("","Manual (No SMS)", man, "Checks Under Review") +
+      kpi("","Total processed", p.length, arch + " no longer in Pending Settlement Funds");
+  }
+}
+
+const sel = (field, id, cur, items, cls, ro, extraCls) => {
+  const c = (items.find(i => i[0] === cur) || [])[1] || "";
+  return '<select class="cell-sel ' + (cls ? c : "") + (extraCls ? " " + extraCls : "") + '" data-id="' + esc(id) + '" data-field="' + field + '" aria-label="' + esc(field) + '"' + (ro ? " disabled" : "") + '><option value=""></option>' +
+    items.map(i => '<option' + (i[0] === cur ? " selected" : "") + '>' + esc(i[0]) + '</option>').join("") + '</select>';
+};
+
+function th(key, label){
+  if(!key) return '<th class="static" scope="col">' + esc(label) + '</th>';
+  const s = S.sort[S.tab], on = s.key === key;
+  return '<th scope="col" aria-sort="' + (on ? (s.dir > 0 ? "ascending" : "descending") : "none") + '"><button type="button" data-sort="' + key + '">' + esc(label) + (on ? '<span class="arr">' + (s.dir > 0 ? "▲" : "▼") + '</span>' : "") + '</button></th>';
+}
+
+function renderTable(L){
+  const w = $("tableWrap");
+  $("tblTitle").textContent = S.tab === "assigned" ? "Assigned checks" : "Processed check log · " + S.year;
+  $("addRow").hidden = S.tab !== "assigned" || !db || !S.canWrite;
+  $("editNote").innerHTML = (S.deals && !S.canWrite) ? '<div class="note" style="margin-bottom:12px">You have view-only access, so the editable columns are locked.</div>' : (S.deals && !db) ? '<div class="note" style="margin-bottom:12px">Shared edits aren\'t available in this view. Open the check log from its claude.ai link to add rows or edit Check Type, Lienholder Copy, Status, and Notes.</div>' : "";
+  if(!S.deals && !Object.keys(S.manual).length){
+    $("showing").textContent = "";
+    w.innerHTML = '<div class="empty">' + (S.loadStatus === "error" ? esc(errMessage(S.err)) : "Loading deals from HubSpot…") + '</div>';
+    return;
+  }
+  const base = S.tab === "assigned" ? L.assigned : L.processed;
+  const allRows = sorted(filtered(base));
+  const rows = allRows.slice(0, S.limit);
+  const nMan = base.filter(d => d.manual).length;
+  $("showing").textContent = (allRows.length === base.length ? base.length + (S.tab === "assigned" ? " unprocessed checks" : " processed checks") : allRows.length + " of " + base.length + (S.tab === "assigned" ? " unprocessed checks match" : " processed checks match")) + (nMan ? " (" + nMan + " added manually)" : "") +
+    (S.tab === "processed" && (S.yearStatus[S.year] === "loading" || S.yearStatus[S.year] === "refreshing") ? " · loading " + S.year + " checks from HubSpot…" : "") +
+    (S.tab === "processed" && S.yearStatus[S.year] === "error" ? " · couldn't load all " + S.year + " checks: " + errMessage(S.yearErr[S.year]) : "");
+  if(!rows.length){ w.innerHTML = '<div class="empty">' + (base.length ? "No checks match these filters. Clear the search or set the filters back to “any”." : (S.tab === "assigned" ? "No unprocessed checks right now. Use Add row for a check that isn't in HubSpot." : "No processed checks yet.")) + '</div>'; return; }
+  const ro = !S.canWrite || !db;
+  const dis = ro ? " disabled" : "";
+  let h = '<div class="tbl-scroll"><table><thead><tr>';
+  if(S.tab === "assigned"){
+    h += th("received","Added to List") + th("checksDate","Checks Received") + th("","Email Sent") + th("matter","Matter Number") + th("checkType","Check Type") + th("","Type of Offer") + th("","Address Confirmed") +
+      th("surrender","Surrender Date") + th("","Lienholder Copy") + th("plaintiff","Plaintiff(s)") + th("mfr","Defendant") + th("","Dispatch") + th("status","Status") + th("coord","Assigned To") + th("","Notes") + th("","Complete");
+  }else{
+    h += th("month","Month") + th("matter","Matter Number") + th("plaintiff","Plaintiff(s)") + th("mfr","Defendant") + th("offerKind","Type") + th("done","Check Type") +
+      th("coord","Assigned To") + th("rfd","Request for Dismissal Assigned") + th("rfdDate","RFD Assigned") + th("","Notes") + th("review","Checks Under Review");
+  }
+  h += '</tr></thead><tbody>';
+  const box = on => '<span class="box' + (on ? " on" : "") + '" role="img" aria-label="' + (on ? "Yes" : "No") + '">' + (on ? "✓" : "") + '</span>';
+  const coordOpts = Object.entries(S.owners).filter(([,n]) => n).sort((a,b) => a[1].localeCompare(b[1]));
+  rows.forEach(d => {
+    const id = esc(d.id), M = d.manual, kind = M ? ' data-kind="manual"' : "";
+    const inp = (type, field, val, cls, label) => '<input type="' + type + '" class="cell-in ' + cls + '" data-id="' + id + '" data-field="' + field + '"' + kind + ' value="' + esc(val) + '" aria-label="' + esc(label) + '"' + dis + (type === "text" ? ' title="' + esc(val) + '"' : "") + '>';
+    const chk = (field, on, label) => '<input type="checkbox" class="cell-chk" data-id="' + id + '" data-field="' + field + '"' + kind + (on ? " checked" : "") + ' aria-label="' + esc(label) + '"' + dis + '>';
+    const S2 = (field, cur, items, colored, extra) => sel(field, d.id, cur, items, colored, ro, extra).replace('<select ', '<select' + kind + ' ');
+    const recv = M ? inp("date","received",d.received,"date","Added to list date")
+      : '<input type="date" class="cell-in date' + (d.receivedOverridden ? "" : " defaulted") + '" data-id="' + id + '" data-field="received" value="' + esc(d.received) + '" aria-label="Added to list date"' + dis + ' title="' + (d.receivedOverridden ? "Set on this page" : "Date the deal entered Pending Settlement Funds (" + d.stageLabel + ")") + '">';
+    const matter = M ? inp("text","matter",d.matter,"txt","Matter number") + '<span class="tag" title="Added on this page, not tied to HubSpot">Manual</span>'
+      : '<a class="mat" href="' + DEAL_URL(d.id) + '" target="_blank" rel="noopener" title="Open in HubSpot">' + esc(d.matter || "(no matter #)") + '</a>' + ((d.archived || (d.stage && d.stage !== STAGE_BB && d.stage !== STAGE_CK)) ? '<span class="tag arch" title="No longer in Pending Settlement Funds">Moved on</span>' : "");
+    const ctype = S2("checkType", d.checkType, CHECK_TYPES.map(t => [t,""]), false, d.checkTypeDefaulted ? "defaulted" : "");
+    const def = M ? inp("text","defendant",d.mfr,"def-in","Defendant") : d.mfr ? '<span class="def" title="' + esc(d.mfrFull) + '">' + esc(d.mfr) + '</span>' : '<span class="muted">—</span>';
+    const cc = M ? S2("coordId", d.coordId, coordOpts.map(([oid,n]) => [oid, ""]), false).replace(/<option( selected)?>(\d+)<\/option>/g, (m0, s1, oid) => '<option value="' + oid + '"' + (s1 || "") + '>' + esc(shortName(S.owners[oid])) + '</option>')
+      : d.coordId ? '<span class="cc" title="' + esc(S.owners[d.coordId] || "") + '">' + esc(coordLabel(d)) + '</span>' : '<span class="muted">—</span>';
+    const status = S2("status", d.status, STATUSES, true);
+    const notes = inp("text","notes",d.notes,"notes","Notes");
+    const surr = M ? inp("date","surrender",d.surrender,"date","Surrender date") : d.surrender ? '<span class="mono">' + esc(fmtDate(d.surrender)) + '</span>' : '<span class="muted">—</span>';
+    const cdate = M ? inp("date","checksDate",d.checksDate,"date","Checks received date") : d.checksDate ? '<span class="mono">' + esc(fmtDate(d.checksDate)) + '</span>' : '<span class="muted">—</span>';
+    const email = M ? chk("emailSent", d.checksReceived, "Email sent") : box(d.checksReceived);
+    const offer = M ? S2("offer", d.offer, [["Exclusive",""],["Inclusive",""]], false)
+      : (d.offer ? '<span class="pill ' + (d.offer === "Exclusive" ? "exc" : "inc") + '">' + d.offer + '</span>' : '<span class="muted">—</span>');
+    const addr = M ? chk("addrConfirmed", d.addrConfirmed, "Address confirmed") : box(d.addrConfirmed);
+    const plt = M ? inp("text","plaintiff",d.plaintiff,"plt-in","Plaintiffs") : esc(d.plaintiff);
+    const curPill = '<span class="cur ' + (d.review === "Complete" ? "complete" : "manual") + '">' + esc(d.review) + '</span>';
+    const review = M ? (S.tab === "assigned"
+        ? (COMPLETABLE.includes(d.checkType) ? (ro ? '<span class="muted">—</span>' : '<button type="button" class="btn sm" data-complete="' + id + '">Mark complete</button>')
+          : '<span class="muted" title="Only Fees, Wire, Overages, and FDO Costs rows can be marked complete">—</span>')
+        : curPill + (ro ? "" : ' <button type="button" class="del undo" data-undo="' + id + '" title="Move back to Assigned Checks">Undo</button>'))
+      : (S.tab === "assigned" ? '<span class="muted" title="Set Checks Under Review in HubSpot">HubSpot</span>' : '<span class="cur ' + (d.review === "Complete" ? "complete" : "manual") + '">' + esc(d.review) + '</span>');
+    const del = M && !ro ? '<button type="button" class="del" data-del="' + id + '">Delete</button>' : "";
+    if(S.tab === "assigned"){
+      h += '<tr><td>' + recv + '</td><td>' + cdate + '</td><td class="ctr">' + email + '</td><td>' + matter + '</td><td>' + ctype + '</td><td>' + offer + '</td><td class="ctr">' + addr + '</td><td>' + surr + '</td><td>' +
+        S2("lien", d.lien, LIEN, true) + '</td><td class="plt">' + plt + '</td><td>' + def + '</td><td>' + S2("col10", d.col10, COL10.map(c => [c,""]), false) + '</td><td>' + status + '</td><td>' + cc + '</td><td>' + notes + '</td><td>' + review + (del ? " " + del : "") + '</td></tr>';
+    }else{
+      const month = M ? inp("date","month",d.month,"date","Month processed")
+        : '<input type="date" class="cell-in date' + (d.monthOverridden ? "" : " defaulted") + '" data-id="' + id + '" data-field="month" value="' + esc(d.month) + '" aria-label="Month processed"' + dis + ' title="' + (d.monthOverridden ? "Set on this page" : d.reviewedDate ? "Checks Reviewed Date in HubSpot" : (S.edits[d.id] || {}).firstProcessed ? "Date this check first showed as processed" : "No Checks Reviewed Date in HubSpot; showing Checks Received Date") + '">';
+      h += '<tr><td>' + month + '</td><td>' + matter + '</td><td class="plt">' + plt + '</td><td>' + def + '</td><td>' + S2("offerKind", d.offerKind, OFFER_KINDS, true, "chip") + '</td><td>' + S2("done", d.done, DONE, true, "chip") +
+        '</td><td>' + cc + '</td><td>' + inp("text","rfd",d.rfd,"txt","Request for dismissal assigned") + '</td><td>' + inp("date","rfdDate",d.rfdDate,"date","RFD assigned date") + '</td><td>' + notes + '</td><td>' + review + (del ? " " + del : "") + '</td></tr>';
+    }
+  });
+  h += '</tbody></table></div>';
+  if(allRows.length > rows.length) h += '<div style="text-align:center;margin-top:12px"><button type="button" class="btn" data-more="1">Show ' + Math.min(200, allRows.length - rows.length) + ' more (' + rows.length + ' of ' + allRows.length + ' shown)</button></div>';
+  w.innerHTML = h;
+  if(S.focusNew){ const f = w.querySelector('input[data-id="' + CSS.escape(S.focusNew) + '"][data-field="matter"]'); if(f){ f.focus(); f.scrollIntoView({ block: "nearest" }); S.focusNew = null; } }
+}
+
+async function saveManual(id, field, value, el){
+  if(!db) return;
+  if(el) el.classList.add("saving");
+  try{ await db.doc("manual/" + id).update({ [field]: value, updatedAt: new Date().toISOString() }); }
+  catch(e){ toast(e && (e.code === "permission_denied" || e.code === "not_granted") ? "You have view-only access, so your change wasn't saved." : "Couldn't save the change: " + ((e && (e.message || e.code)) || "unknown error")); requestRender(true); }
+  finally{ if(el) el.classList.remove("saving"); }
+}
+async function addRow(){
+  if(!db) return;
+  S.q = ""; S.coord = ""; S.status = ""; S.type = ""; S.sort.assigned = { key: "received", dir: -1 };
+  try{
+    const ref = await db.collection("manual").add({ received: todayIso(), createdAt: new Date().toISOString() });
+    S.focusNew = ref.id; requestRender(true);
+  }catch(e){ toast(e && e.code === "quota_exceeded" ? "The check log is full, so the row wasn't added. Delete rows you no longer need, then try again." : "Couldn't add the row: " + ((e && (e.message || e.code)) || "unknown error")); }
+}
+
+/* ---------- events ---------- */
+document.querySelectorAll(".tabbtn").forEach(b => b.addEventListener("click", () => { S.tab = b.dataset.tab; S.coord = ""; S.status = ""; S.type = ""; S.limit = 200; requestRender(true); }));
+$("refreshBtn").addEventListener("click", () => load(true));
+$("q").addEventListener("input", e => { S.q = e.target.value; S.limit = 200; renderTable(lists()); });
+$("fCoord").addEventListener("change", e => { S.coord = e.target.value; S.limit = 200; renderAll(); });
+$("fStatus").addEventListener("change", e => { S.status = e.target.value; S.limit = 200; renderAll(); });
+$("fYear").addEventListener("change", e => { S.year = parseInt(e.target.value, 10); S.limit = 200; if(!S.byYear[S.year] && S.yearStatus[S.year] !== "loading") loadYear(S.year, false); renderAll(); });
+$("fType").addEventListener("change", e => { S.type = e.target.value; S.limit = 200; renderAll(); });
+$("addRow").addEventListener("click", addRow);
+$("tableWrap").addEventListener("click", async e => {
+  const comp = e.target.closest("button[data-complete]");
+  if(comp){
+    const cid = comp.dataset.complete; comp.disabled = true;
+    if(!(S.manual[cid] || {}).month) saveManual(cid, "month", todayIso());
+    await saveManual(cid, "review", "Complete");
+    toast("Marked complete and moved to the Processed Check Log.");
+    return;
+  }
+  const undo = e.target.closest("button[data-undo]");
+  if(undo){ undo.disabled = true; await saveManual(undo.dataset.undo, "review", ""); toast("Moved back to Assigned Checks."); return; }
+  const del = e.target.closest("button[data-del]");
+  if(del){
+    const m = S.manual[del.dataset.del] || {};
+    if(!confirm("Delete the manual row" + (m.matter ? " for " + m.matter : "") + "? This can't be undone.")) return;
+    try{ await db.doc("manual/" + del.dataset.del).delete(); }catch(err){ toast("Couldn't delete the row: " + ((err && (err.message || err.code)) || "unknown error")); }
+    return;
+  }
+  if(e.target.closest("button[data-more]")){ S.limit += 200; renderTable(lists()); return; }
+  const b = e.target.closest("button[data-sort]"); if(!b) return;
+  const s = S.sort[S.tab]; if(s.key === b.dataset.sort) s.dir = -s.dir; else { s.key = b.dataset.sort; s.dir = ["received","surrender","checksDate","month","rfdDate"].includes(s.key) ? -1 : 1; }
+  renderTable(lists());
+});
+$("tableWrap").addEventListener("change", e => {
+  const el = e.target; if(!el.dataset || !el.dataset.field) return;
+  const id = el.dataset.id, field = el.dataset.field, value = el.type === "checkbox" ? el.checked : el.value;
+  if(el.tagName === "SELECT"){
+    const all = { status: STATUSES, lien: LIEN, offerKind: OFFER_KINDS, done: DONE };
+    if(all[field]){ el.className = "cell-sel " + (el.classList.contains("chip") ? "chip " : "") + ((all[field].find(i => i[0] === value) || [])[1] || ""); }
+    else el.classList.remove("defaulted");
+  }
+  if(field === "received" || field === "month") el.classList.remove("defaulted");
+  if(el.dataset.kind === "manual"){ saveManual(id, field, value, el); if(field === "review" && value){ if(!(S.manual[id] || {}).month) saveManual(id, "month", todayIso()); toast("Moved to the Processed Check Log."); } else if(field === "review") toast("Moved back to Assigned Checks."); }
+  else save(id, field, value, el);
+});
+$("tableWrap").addEventListener("keydown", e => { if(e.key === "Enter" && e.target.classList.contains("notes")) e.target.blur(); });
+$("tableWrap").addEventListener("focusout", () => { setTimeout(() => { if(pendingRender) requestRender(); }, 0); });
+setInterval(() => { if(!document.hidden) renderStatus(); }, 30000);
+
+/* ---------- Azure data layer ----------
+   These stand in for the Claude runtime: HubSpot calls go to /api/hubspot/* (an Azure Function
+   that holds the HubSpot key), and shared edits go to /api/data/* (Azure Table Storage). */
+async function apiReq(method, url, body){
+  let r;
+  try{
+    r = await fetch(url, { method, credentials: "same-origin", headers: body ? { "Content-Type": "application/json" } : {}, body: body ? JSON.stringify(body) : undefined });
+  }catch(e){ throw { code: "upstream_error", message: "network error" }; }
+  if(r.status === 401){ location.href = "/.auth/login/aad?post_login_redirect_uri=" + encodeURIComponent(location.pathname); throw { code: "needs_reauth" }; }
+  let j = null; try{ j = await r.json(); }catch(e){}
+  if(r.status === 403) throw { code: "permission_denied", message: (j && j.error) || "Forbidden" };
+  if(!r.ok) throw { code: (j && j.code) || (r.status === 429 ? "rate_limited" : "upstream_error"), message: (j && j.error) || ("HTTP " + r.status) };
+  return j;
+}
+function makeHubSpotClient(){
+  // Deals are pushed into Azure by a HubSpot workflow; the page loads them all once and filters here.
+  let cached = null;
+  const procVals = ["Complete","Manual (No SMS)"];
+  async function all(refresh){
+    if(refresh || !cached || Date.now() - cached.at > 60000) cached = { at: Date.now(), p: apiReq("GET", "/api/hubspot/deals") };
+    try{ return await cached.p; }catch(e){ cached = null; throw e; }
+  }
+  return {
+    async callTool(server, tool, input, opts){
+      const refresh = !!(opts && opts.cache && opts.cache.refresh);
+      if(tool === SEARCH){
+        const f = (input.filterGroups && input.filterGroups[0] && input.filterGroups[0].filters) || [];
+        const isPsf = f.some(x => x.propertyName === "dealstage");
+        const yf = f.find(x => x.propertyName === "checks_received_date" && x.operator === "GTE");
+        const y = yf ? String(parseInt(yf.value, 10)) : "";
+        const j = await all(refresh && (input.offset || 0) === 0);
+        const results = (j.results || []).filter(r => {
+          const p = r.properties || {};
+          if(isPsf) return p.dealstage === STAGE_BB || p.dealstage === STAGE_CK;
+          return procVals.includes(p.checks_under_review) && String(p.checks_received_date || "").slice(0,4) === y;
+        });
+        return { payload: { results, total: results.length }, cache: { storedAt: j.fetchedAt || Date.now() } };
+      }
+      if(tool === OWNERS) return { payload: await apiReq("POST", "/api/hubspot/owners", { ownerIds: input.ownerIds || [] }) };
+      throw { code: "upstream_error", message: "unknown request" };
+    }
+  };
+}
+function makeDataClient(){
+  const subs = {}, timers = {}, pending = {};
+  const enc = encodeURIComponent;
+  async function pull(col){
+    try{
+      const j = await apiReq("GET", "/api/data/" + col);
+      const docs = (j.items || []).map(it => ({ id: it.id, exists: true, data: () => it.data }));
+      (subs[col] || []).forEach(s => s.ok({ docs }));
+    }catch(e){ (subs[col] || []).forEach(s => s.err && s.err(e)); }
+  }
+  function soon(col){ clearTimeout(pending[col]); pending[col] = setTimeout(() => pull(col), 500); }
+  return {
+    collection(col){
+      return {
+        onSnapshot(ok, err){
+          (subs[col] = subs[col] || []).push({ ok, err }); pull(col);
+          if(!timers[col]) timers[col] = setInterval(() => { if(!document.hidden) pull(col); }, 30000);
+          return () => {};
+        },
+        async add(data){ const j = await apiReq("POST", "/api/data/" + col, { data }); await pull(col); return { id: j.id }; }
+      };
+    },
+    doc(path){
+      const i = path.indexOf("/"), col = path.slice(0, i), id = path.slice(i + 1);
+      return {
+        async set(data){ await apiReq("PUT", "/api/data/" + col + "/" + enc(id), { data }); soon(col); },
+        async update(data){ await apiReq("PATCH", "/api/data/" + col + "/" + enc(id), { data }); soon(col); },
+        async delete(){ await apiReq("DELETE", "/api/data/" + col + "/" + enc(id)); soon(col); }
+      };
+    }
+  };
+}
+async function loadUser(){
+  try{
+    const r = await fetch("/.auth/me", { credentials: "same-origin" });
+    const j = await r.json();
+    const p = j && j.clientPrincipal;
+    if(!p) return null;
+    const roles = p.userRoles || [];
+    return { name: p.userDetails || "", can: n => n === "data.write" ? roles.includes("checklog-editor") : null };
+  }catch(e){ return null; }
+}
+
+/* ---------- start ---------- */
+renderAll();
+(async () => {
+  mcp = makeHubSpotClient(); db = makeDataClient(); user = await loadUser();
+  if(user && user.name) $("who").textContent = user.name;
+  if(user && typeof user.can === "function"){ try{ const c = user.can("data.write"); if(c === false) S.canWrite = false; }catch(e){} }
+  if(db){
+    db.collection("checks").onSnapshot(snap => {
+      const next = {}; snap.docs.forEach(doc => { if(doc.exists) next[doc.id] = doc.data(); });
+      const first = !S.dbReady;
+      S.edits = next; S.dbReady = true; requestRender();
+      if(first) syncSnapshots();
+    }, e => { toast("Couldn't load shared edits (" + ((e && (e.code || e.message)) || "error") + "). Reload to try again."); });
+    db.collection("manual").onSnapshot(snap => {
+      const next = {}; snap.docs.forEach(doc => { if(doc.exists) next[doc.id] = doc.data(); });
+      S.manual = next; requestRender(!!S.focusNew);
+    }, e => { toast("Couldn't load manual rows (" + ((e && (e.code || e.message)) || "error") + "). Reload to try again."); });
+  }
+  load(false);
+  setInterval(() => { if(!document.hidden) load(false); }, REFRESH_MS);
+})();
+})();
+</script>
+</body>
+</html>
