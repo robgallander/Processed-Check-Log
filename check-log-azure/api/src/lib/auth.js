@@ -9,8 +9,8 @@ function principal(request) {
   }
 }
 
-const EDITOR = "checklog-editor";
-const VIEWER = "checklog-viewer";
+const EDITOR = "checklog_editor";
+const VIEWER = "checklog_viewer";
 
 function roles(request) {
   const p = principal(request);
