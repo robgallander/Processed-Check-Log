@@ -4,8 +4,8 @@
     { "route": "/.auth/login/twitter", "statusCode": 404 },
     { "route": "/api/hubspot/webhook", "methods": ["POST"], "allowedRoles": ["anonymous"] },
     { "route": "/403.html", "allowedRoles": ["authenticated"] },
-    { "route": "/api/data/*", "methods": ["POST", "PUT", "PATCH", "DELETE"], "allowedRoles": ["checklog-editor"] },
-    { "route": "/*", "allowedRoles": ["checklog-editor", "checklog-viewer"] }
+    { "route": "/api/data/*", "methods": ["POST", "PUT", "PATCH", "DELETE"], "allowedRoles": ["checklog_editor"] },
+    { "route": "/*", "allowedRoles": ["checklog_editor", "checklog_viewer"] }
   ],
   "responseOverrides": {
     "401": { "redirect": "/.auth/login/aad?post_login_redirect_uri=.referrer", "statusCode": 302 },
