@@ -769,7 +769,7 @@ async function loadUser(){
     const p = j && j.clientPrincipal;
     if(!p) return null;
     const roles = p.userRoles || [];
-    return { name: p.userDetails || "", can: n => n === "data.write" ? roles.includes("checklog-editor") : null };
+    return { name: p.userDetails || "", can: n => n === "data.write" ? roles.includes("checklog_editor") : null };
   }catch(e){ return null; }
 }
 
