@@ -1,11 +1,27 @@
 // Shared edits and manual rows, stored in one Azure Table ("CheckLog").
-// PartitionKey = collection ("checks" or "manual"), RowKey = document id, data = JSON text.
+// PartitionKey = collection ("checks", "manual" or "team"), RowKey = document id, data = JSON text.
+// "team" holds the Assigned To list: RowKey = HubSpot owner ID, data = { name, active }.
 const { app } = require("@azure/functions");
 const crypto = require("crypto");
 const { canView, canEdit, who, json, denied } = require("../lib/auth");
 const { table, listPartition } = require("../lib/table");
 
-const COLLECTIONS = new Set(["checks", "manual"]);
+const OWNERS = require("../lib/owners.json");
+
+const COLLECTIONS = new Set(["checks", "manual", "team"]);
+
+// First-time setup of the team list: everyone in owners.json, with the current coordinators active.
+const ACTIVE = { "253228014": "Nancy Sanchez", "95617618": "Alvaro Sanchez", "97151553": "Christopher Villalba", "80959304": "Oscar Mora", "97151554": "Cristopher Cruz" };
+async function seedTeam(t) {
+  const items = [];
+  for (const [id, name] of Object.entries(OWNERS)) {
+    if (!/^\d+$/.test(id)) continue;
+    const data = { name: ACTIVE[id] || name, active: !!ACTIVE[id] };
+    await t.upsertEntity({ partitionKey: "team", rowKey: id, data: JSON.stringify(data), updatedBy: "setup", updatedAt: new Date().toISOString() }, "Replace");
+    items.push({ id, data });
+  }
+  return items;
+}
 
 const validId = (id) => typeof id === "string" && /^[A-Za-z0-9_-]{1,100}$/.test(id);
 const fail = (e) => json(e.status || 500, { code: e.code || "upstream_error", error: e.error || String(e.message || e) });
@@ -35,7 +51,8 @@ app.http("dataList", {
     const col = request.params.col;
     if (!COLLECTIONS.has(col)) return json(404, { error: "Unknown collection" });
     try {
-      const items = (await listPartition(col)).map((i) => ({ id: i.id, data: i.data }));
+      let items = (await listPartition(col)).map((i) => ({ id: i.id, data: i.data }));
+      if (col === "team" && !items.length) items = await seedTeam(await table());
       return json(200, { items });
     } catch (e) { return fail(e); }
   },
@@ -65,7 +82,7 @@ app.http("dataDoc", {
   handler: async (request) => {
     if (!canEdit(request)) return denied();
     const { col, id } = request.params;
-    if (!COLLECTIONS.has(col) || !validId(id)) return json(404, { error: "Unknown document" });
+    if (!COLLECTIONS.has(col) || !validId(id) || (col === "team" && !/^\d{1,20}$/.test(id))) return json(404, { error: "Unknown document" });
     try {
       const t = await table();
       if (request.method === "DELETE") {

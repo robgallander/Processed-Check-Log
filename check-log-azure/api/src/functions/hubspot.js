@@ -2,9 +2,11 @@
 //   POST /api/hubspot/webhook  <- called by the HubSpot workflow; protected by WEBHOOK_SECRET
 //   GET  /api/hubspot/deals    -> the stored deals, for the page
 //   POST /api/hubspot/owners   -> coordinator names, from owners.json
+//   POST /api/hubspot/update   -> editors only; sends one change to the HubSpot "Check Log write-back"
+//                                 workflow (HUBSPOT_WRITEBACK_URL) and updates the stored copy of the deal
 const { app } = require("@azure/functions");
 const crypto = require("crypto");
-const { canView, json, denied } = require("../lib/auth");
+const { canView, canEdit, who, json, denied } = require("../lib/auth");
 const { table, listPartition } = require("../lib/table");
 const OWNERS = require("../lib/owners.json");
 
@@ -118,4 +120,51 @@ app.http("hubspotOwners", {
     return json(200, { owners: ids.filter((id) => OWNERS[id]).map((id) => ({ ownerId: Number(id), name: OWNERS[id] })) });
   },
 });
+// Changes the site may send to HubSpot, and how each shows up on the stored deal.
+const WRITEBACK = {
+  checks_received: { value: () => "Yes", prop: "checks_received", stored: () => "true" },
+  address_confirmed: { value: () => "Confirmed", prop: "clio_address_confirmed", stored: () => "Confirmed" },
+  check_coordinator: { value: (v) => (/^\d{1,20}$/.test(String(v || "")) ? String(v) : null), prop: "check_coordinator", stored: (v) => String(v) },
+};
+const NO_CHECKS_RECEIVED = ["Overages", "FDO Costs", "Supp"];
+
+app.http("hubspotUpdate", {
+  methods: ["POST"],
+  route: "hubspot/update",
+  authLevel: "anonymous",
+  handler: async (request, context) => {
+    if (!canEdit(request)) return denied();
+    const url = process.env.HUBSPOT_WRITEBACK_URL || "";
+    if (!/^https:\/\//.test(url)) return json(500, { code: "config_error", error: "HUBSPOT_WRITEBACK_URL is not set" });
+    const b = await request.json().catch(() => ({}));
+    const dealId = String(b.dealId || "");
+    const rule = WRITEBACK[b.field];
+    if (!/^\d{1,20}$/.test(dealId) || !rule) return json(400, { error: "Unknown deal or field" });
+    const value = rule.value(b.value);
+    if (value === null) return json(400, { error: "Pick a person from the list" });
+    try {
+      const t = await table();
+      let deal;
+      try { deal = JSON.parse((await t.getEntity("deals", dealId)).data || "{}"); }
+      catch (e) { if (e.statusCode === 404) return json(404, { error: "That deal isn't on the check log" }); throw e; }
+      if (b.field === "checks_received") {
+        // Overages, FDO Costs and Supp checks never set Checks Received in HubSpot.
+        let checkType = deal.dealstage === STAGE_BB ? "BB" : "";
+        try { const e = JSON.parse((await t.getEntity("checks", dealId)).data || "{}"); if (e.checkType != null) checkType = e.checkType; }
+        catch (e) { if (e.statusCode !== 404) throw e; }
+        if (NO_CHECKS_RECEIVED.includes(checkType)) return json(200, { ok: true, skipped: true });
+      }
+      const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ dealId: Number(dealId), field: b.field, value }) });
+      if (!r.ok) {
+        context.warn("HubSpot write-back failed", r.status, (await r.text().catch(() => "")).slice(0, 300));
+        return json(502, { code: "upstream_error", error: "HubSpot didn't accept the change (HTTP " + r.status + ")" });
+      }
+      // Show the change right away; the Check Log sync workflow will confirm it from HubSpot.
+      deal[rule.prop] = rule.stored(value);
+      await t.upsertEntity({ partitionKey: "deals", rowKey: dealId, data: JSON.stringify(deal), updatedAt: new Date().toISOString(), updatedBy: who(request) }, "Replace");
+      return json(200, { ok: true, properties: { [rule.prop]: deal[rule.prop] } });
+    } catch (e) { return fail(e); }
+  },
+});
+
 module.exports._test = { extract, relevant };
