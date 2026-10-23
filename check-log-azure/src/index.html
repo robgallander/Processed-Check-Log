@@ -64,7 +64,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .kpi .lbl{font-size:13px;font-weight:500;color:var(--muted)}
 .kpi .val{font:600 30px/1.2 'IBM Plex Mono',ui-monospace,monospace;margin:6px 0 2px}
 .kpi .sub{font-size:13px;color:var(--muted)}
-.kpi.bad .val{color:var(--bad)} .kpi.hi .val{color:var(--hi-ink)} .kpi.warn .val{color:var(--warn)} .kpi.good .val{color:var(--good)}
+.kpi.bad .val{color:var(--bad)} .kpi.bad2 .val{color:var(--bad)} .kpi.hi .val{color:var(--hi-ink)} .kpi.warn .val{color:var(--warn)} .kpi.good .val{color:var(--good)}
 
 .table-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:14px}
 .table-head h2{margin:0;font-size:17px;font-weight:600}
@@ -135,6 +135,24 @@ td a{color:var(--accent);text-decoration:none} td a:hover{text-decoration:underl
 .empty{padding:28px 16px;text-align:center;color:var(--muted);font-size:14px}
 .caption{font-size:13px;color:var(--muted)}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;font-size:13px;z-index:20;max-width:90vw}
+.cell-sel.cc-sel{min-width:170px}
+.site-date{color:var(--muted)}
+dialog.team{border:1px solid var(--line);border-radius:12px;padding:0;background:var(--card);color:var(--ink);width:min(640px,92vw);max-height:86vh}
+dialog.team::backdrop{background:rgba(15,20,27,.45)}
+.team-in{padding:20px 22px;display:flex;flex-direction:column;gap:16px;overflow:auto;max-height:86vh}
+.team-in h2{margin:0;font-size:19px}
+.team-in h3{margin:0 0 6px;font-size:14px}
+.team-in p{margin:0;font-size:13px;color:var(--muted)}
+.team-list{display:flex;flex-direction:column;gap:6px}
+.team-row{display:grid;grid-template-columns:1fr 120px 90px;gap:10px;align-items:center;font-size:13.5px}
+.team-row .cell-in{width:100%}
+.team-row.off .cell-in{color:var(--muted)}
+.team-row label{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted)}
+.team-new{border:1px solid var(--warn-line);background:var(--warn-bg);border-radius:8px;padding:12px}
+.team-add{display:grid;grid-template-columns:1fr 160px auto;gap:10px}
+.team-foot{display:flex;justify-content:flex-end}
+.badge{display:inline-block;margin-left:6px;padding:0 7px;border-radius:999px;font-size:11.5px;font-weight:700;background:var(--warn);color:#fff}
+@media (max-width:560px){.team-row,.team-add{grid-template-columns:1fr}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.kpis{grid-template-columns:1fr}.tabbar{grid-template-columns:1fr}header h1{font-size:28px}}
@@ -147,7 +165,7 @@ td a{color:var(--accent);text-decoration:none} td a:hover{text-decoration:underl
     <div class="eyebrow">Quill &amp; Arrow · Settlement checks</div>
     <div class="head-row">
       <h1>Assigned &amp; Processed Check Log</h1>
-      <div class="live"><span class="dot" id="liveDot"></span><span id="liveText">Connecting to HubSpot…</span><button class="btn" id="refreshBtn" type="button">Refresh</button><span id="who"></span><a class="btn" href="/.auth/logout?post_logout_redirect_uri=/" style="text-decoration:none">Sign out</a></div>
+      <div class="live"><span class="dot" id="liveDot"></span><span id="liveText">Connecting to HubSpot…</span><button class="btn" id="refreshBtn" type="button">Refresh</button><button class="btn" id="teamBtn" type="button" hidden>Manage team</button><span id="who"></span><a class="btn" href="/.auth/logout?post_logout_redirect_uri=/" style="text-decoration:none">Sign out</a></div>
     </div>
   </header>
 
@@ -185,9 +203,20 @@ td a{color:var(--accent);text-decoration:none} td a:hover{text-decoration:underl
     <div id="tableWrap"></div>
   </section>
 
-  <div class="caption" id="sourceNote">Source: HubSpot deals in Pending Settlement Funds (BB) and (CK). Checks Received = Checks Received Date, Email Sent = Checks Received, Type of Offer = Fees by Motion (Yes = Exclusive, No = Inclusive), Address Confirmed = Clio Address Confirmed, Assigned To = Check Coordinator. Added to List defaults to the date the deal entered its current Pending Settlement Funds stage. Added to List, Check Type, Lienholder Copy, Dispatch, Status, and Notes are kept on this page and shared with everyone who opens it. On the Processed Check Log, Month defaults to HubSpot’s Checks Reviewed Date, and processed deals stay listed after they leave Pending Settlement Funds (tagged Moved on). Each year has its own log (pick the year above the table): it includes every deal, in any stage, with a Checks Received Date in that year and Checks Under Review = Complete or Manual (No SMS). Manual rows go in the year of their Month. Rows marked Manual were added on this page for checks not tied to HubSpot; Fees, Wire, Overages, and FDO Costs rows can be marked complete with the Mark complete button, which moves them to the Processed Check Log.</div>
+  <div class="caption" id="sourceNote">Source: HubSpot deals in Pending Settlement Funds (BB) and (CK). Checks Received = Checks Received Date, Email Sent = Checks Received, Type of Offer = Fees by Motion (Yes = Exclusive, No = Inclusive), Address Confirmed = Clio Address Confirmed, Assigned To = Check Coordinator. Checks Received can be set on this page to today’s date only; doing so marks Checks Received = Yes in HubSpot, except for Overages, FDO Costs, and Supp checks. Checking Address Confirmed sets Clio Address Confirmed to Confirmed in HubSpot, and changing Assigned To changes Check Coordinator in HubSpot. 14+ Days Pending counts checks received 14–29 days ago that are still on Assigned Checks; 30+ Days Pending counts those received 30 or more days ago. Added to List defaults to the date the deal entered its current Pending Settlement Funds stage. Added to List, Check Type, Lienholder Copy, Dispatch, Status, and Notes are kept on this page and shared with everyone who opens it. On the Processed Check Log, Month defaults to HubSpot’s Checks Reviewed Date, and processed deals stay listed after they leave Pending Settlement Funds (tagged Moved on). Each year has its own log (pick the year above the table): it includes every deal, in any stage, with a Checks Received Date in that year and Checks Under Review = Complete or Manual (No SMS). Manual rows go in the year of their Month. Rows marked Manual were added on this page for checks not tied to HubSpot; Fees, Wire, Overages, and FDO Costs rows can be marked complete with the Mark complete button, which moves them to the Processed Check Log.</div>
 </div>
 <div id="toast" class="toast" hidden role="status"></div>
+<dialog class="team" id="teamDlg" aria-labelledby="teamTitle">
+  <div class="team-in">
+    <div><h2 id="teamTitle">Manage team</h2><p>These names fill the Assigned To dropdown. Turn off Active when someone leaves: they drop out of the dropdown, but checks they handled keep their name.</p></div>
+    <div id="teamNew"></div>
+    <div><h3>Team</h3><div class="team-list" id="teamList"></div></div>
+    <div><h3>Add a person</h3><p style="margin-bottom:8px">Use their HubSpot owner ID. If you don’t know it, assign them as Check Coordinator on any deal in HubSpot; their ID will show up above under “New in HubSpot” to name.</p>
+      <div class="team-add"><input class="cell-in" id="addName" placeholder="Full name" aria-label="Full name"><input class="cell-in" id="addId" placeholder="HubSpot owner ID" inputmode="numeric" aria-label="HubSpot owner ID"><button class="btn primary" type="button" id="addPerson">Add</button></div>
+    </div>
+    <div class="team-foot"><button class="btn" type="button" id="teamClose">Done</button></div>
+  </div>
+</dialog>
 
 <script>
 (function(){
@@ -208,6 +237,7 @@ const LIEN = [["Yes","lh-yes"],["No","lh-no"],["Title","lh-title"],["C&K","lh-ck
 const COL10 = ["PUDS","No Checks","Wire Transfer","OC Request","See Notes"];
 const STATUSES = [["Urgent/Escalated","st-urgent"],["High","st-high"],["Priority","st-priority"],["Medium Priority","st-medium"],["Low Priority","st-low"]];
 const COMPLETABLE = ["Fees","Wire","Overages","FDO Costs"];
+const NO_CHECKS_RECEIVED = ["Overages","FDO Costs","Supp"];
 const OFFER_KINDS = [["Rule 68 - Federal","ty-68"],["998 - State","ty-998"]];
 const DONE = [["Done","dn-done"],["Partial","dn-partial"]];
 const FIRST_YEAR = 2026;
@@ -217,7 +247,7 @@ const MFR = [[/general motors|\bgmc?\b|chevrolet|cadillac|buick/i,"GM"],[/fca|ch
 const mfrCode = s => { if(!s) return ""; for(const [re,c] of MFR) if(re.test(s)) return c; return s; };
 
 /* ---------- state ---------- */
-const S = { tab: "assigned", deals: null, loadStatus: "loading", err: null, storedAt: null, owners: {}, edits: {}, manual: {}, focusNew: null, dbReady: false, canWrite: true,
+const S = { tab: "assigned", deals: null, loadStatus: "loading", err: null, storedAt: null, owners: {}, team: {}, edits: {}, manual: {}, focusNew: null, dbReady: false, canWrite: true,
   limit: 200, year: Math.max(FIRST_YEAR, new Date().getFullYear()), byYear: {}, yearStatus: {}, yearErr: {}, sort: { assigned: { key: "received", dir: -1 }, processed: { key: "month", dir: -1 } }, q: "", coord: "", status: "", type: "" };
 let mcp = null, db = null, user = null, pendingRender = false;
 
@@ -255,7 +285,9 @@ function shortName(full){
   const parts = full.trim().split(/\s+/);
   return parts.length > 1 ? parts[0] + " " + parts[parts.length-1][0] + "." : parts[0];
 }
-const coordLabel = r => r.coordId ? (S.owners[r.coordId] ? shortName(S.owners[r.coordId]) : "#" + r.coordId) : "";
+const coordName = id => !id ? "" : (S.team[id] && S.team[id].name) || S.owners[id] || "";
+const coordLabel = r => r.coordId ? (coordName(r.coordId) || "#" + r.coordId) : "";
+const daysSince = iso => { if(!iso) return null; const p = iso.slice(0,10).split("-").map(Number); const then = new Date(p[0], p[1]-1, p[2]); const n = new Date(); const now = new Date(n.getFullYear(), n.getMonth(), n.getDate()); return Math.round((now - then) / 86400000); };
 
 function normDeal(r){
   const p = r.properties || {};
@@ -290,6 +322,7 @@ function view(d){
   const e = S.edits[d.id] || {};
   return Object.assign({}, d, {
     received: e.received || d.entered || "",
+    checksDate: d.checksDate || e.checksDate || "", checksDateSite: !d.checksDate && !!e.checksDate,
     receivedOverridden: !!e.received,
     checkType: e.checkType != null ? e.checkType : (d.stage === STAGE_BB ? "BB" : ""),
     checkTypeDefaulted: e.checkType == null && d.stage === STAGE_BB,
@@ -488,6 +521,7 @@ function renderAll(){
   renderControls(L);
   renderKpis(L);
   renderTable(L);
+  renderTeamBtn();
 }
 
 function renderControls(L){
@@ -521,10 +555,11 @@ function renderKpis(L){
   if(S.tab === "assigned"){
     const a = L.assigned;
     const urgent = a.filter(d => d.status === "Urgent/Escalated").length, high = a.filter(d => d.status === "High").length;
-    const sent = a.filter(d => d.checksReceived).length, noAddr = a.filter(d => !d.addrConfirmed).length, noCC = a.filter(d => !d.coordId).length;
+    const age = a.map(d => daysSince(d.checksDate));
+    const p14 = age.filter(n => n !== null && n >= 14 && n <= 29).length, p30 = age.filter(n => n !== null && n >= 30).length, noCC = a.filter(d => !d.coordId).length;
     k.innerHTML = kpi("bad","Urgent / escalated", urgent, "Status set on this page") + kpi("hi","High", high, "Status set on this page") +
-      kpi("good","Email sent", sent, "of " + a.length + " · Checks Received = Yes") + kpi("warn","Address not confirmed", noAddr, "Clio Address Confirmed ≠ Confirmed") +
-      kpi("","Not assigned", noCC, "No Check Coordinator in HubSpot");
+      kpi("warn","14+ Days Pending", p14, "Checks received 14–29 days ago") + kpi("bad2","30+ Days Pending", p30, "Checks received 30+ days ago") +
+      kpi("","Not assigned", noCC, "No Check Coordinator");
   }else{
     const p = L.processed;
     const comp = p.filter(d => d.review === "Complete").length, man = p.filter(d => d.review === "Manual (No SMS)").length;
@@ -577,7 +612,16 @@ function renderTable(L){
   }
   h += '</tr></thead><tbody>';
   const box = on => '<span class="box' + (on ? " on" : "") + '" role="img" aria-label="' + (on ? "Yes" : "No") + '">' + (on ? "✓" : "") + '</span>';
-  const coordOpts = Object.entries(S.owners).filter(([,n]) => n).sort((a,b) => a[1].localeCompare(b[1]));
+  const activeTeam = Object.entries(S.team).filter(([,m]) => m && m.active && m.name).sort((a,b) => a[1].name.localeCompare(b[1].name));
+  const today = todayIso();
+  /* Assigned To dropdown: active team members, plus whoever is assigned now even if inactive */
+  const ccSelect = (d, kindAttr, hsAttr) => {
+    const opts = activeTeam.map(([oid,m]) => [oid, m.name]);
+    if(d.coordId && !opts.some(o => o[0] === d.coordId)) opts.push([d.coordId, coordLabel(d)]);
+    const blank = !d.coordId || d.manual ? '<option value=""></option>' : "";
+    return '<select class="cell-sel cc-sel" data-id="' + esc(d.id) + '" data-field="coordId"' + kindAttr + hsAttr + ' aria-label="Assigned to"' + (ro ? " disabled" : "") + '>' + blank +
+      opts.map(([v,l]) => '<option value="' + esc(v) + '"' + (v === d.coordId ? " selected" : "") + '>' + esc(l) + '</option>').join("") + '</select>';
+  };
   rows.forEach(d => {
     const id = esc(d.id), M = d.manual, kind = M ? ' data-kind="manual"' : "";
     const inp = (type, field, val, cls, label) => '<input type="' + type + '" class="cell-in ' + cls + '" data-id="' + id + '" data-field="' + field + '"' + kind + ' value="' + esc(val) + '" aria-label="' + esc(label) + '"' + dis + (type === "text" ? ' title="' + esc(val) + '"' : "") + '>';
@@ -589,16 +633,22 @@ function renderTable(L){
       : '<a class="mat" href="' + DEAL_URL(d.id) + '" target="_blank" rel="noopener" title="Open in HubSpot">' + esc(d.matter || "(no matter #)") + '</a>' + ((d.archived || (d.stage && d.stage !== STAGE_BB && d.stage !== STAGE_CK)) ? '<span class="tag arch" title="No longer in Pending Settlement Funds">Moved on</span>' : "");
     const ctype = S2("checkType", d.checkType, CHECK_TYPES.map(t => [t,""]), false, d.checkTypeDefaulted ? "defaulted" : "");
     const def = M ? inp("text","defendant",d.mfr,"def-in","Defendant") : d.mfr ? '<span class="def" title="' + esc(d.mfrFull) + '">' + esc(d.mfr) + '</span>' : '<span class="muted">—</span>';
-    const cc = M ? S2("coordId", d.coordId, coordOpts.map(([oid,n]) => [oid, ""]), false).replace(/<option( selected)?>(\d+)<\/option>/g, (m0, s1, oid) => '<option value="' + oid + '"' + (s1 || "") + '>' + esc(shortName(S.owners[oid])) + '</option>')
-      : d.coordId ? '<span class="cc" title="' + esc(S.owners[d.coordId] || "") + '">' + esc(coordLabel(d)) + '</span>' : '<span class="muted">—</span>';
+    const cc = M ? ccSelect(d, kind, "")
+      : (S.tab === "assigned" && !d.archived && !ro) ? ccSelect(d, "", ' data-hs="check_coordinator"')
+      : d.coordId ? '<span class="cc">' + esc(coordLabel(d)) + '</span>' : '<span class="muted">—</span>';
     const status = S2("status", d.status, STATUSES, true);
     const notes = inp("text","notes",d.notes,"notes","Notes");
     const surr = M ? inp("date","surrender",d.surrender,"date","Surrender date") : d.surrender ? '<span class="mono">' + esc(fmtDate(d.surrender)) + '</span>' : '<span class="muted">—</span>';
-    const cdate = M ? inp("date","checksDate",d.checksDate,"date","Checks received date") : d.checksDate ? '<span class="mono">' + esc(fmtDate(d.checksDate)) + '</span>' : '<span class="muted">—</span>';
+    /* Checks Received: HubSpot's date is read-only; otherwise it can be set to today's date only */
+    const cdate = (!M && d.checksDate && !d.checksDateSite) ? '<span class="mono">' + esc(fmtDate(d.checksDate)) + '</span>'
+      : (ro || (d.checksDate && d.checksDate !== today)) ? (d.checksDate ? '<span class="mono' + (M ? "" : " site-date") + '" title="' + (M ? "" : "Set on this page") + '">' + esc(fmtDate(d.checksDate)) + '</span>' : '<span class="muted">—</span>')
+      : '<input type="date" class="cell-in date" data-id="' + id + '" data-field="checksDate"' + kind + ' value="' + esc(d.checksDate) + '" min="' + today + '" max="' + today + '" aria-label="Checks received date (today only)" title="Today’s date only">';
     const email = M ? chk("emailSent", d.checksReceived, "Email sent") : box(d.checksReceived);
     const offer = M ? S2("offer", d.offer, [["Exclusive",""],["Inclusive",""]], false)
       : (d.offer ? '<span class="pill ' + (d.offer === "Exclusive" ? "exc" : "inc") + '">' + d.offer + '</span>' : '<span class="muted">—</span>');
-    const addr = M ? chk("addrConfirmed", d.addrConfirmed, "Address confirmed") : box(d.addrConfirmed);
+    const addr = M ? chk("addrConfirmed", d.addrConfirmed, "Address confirmed")
+      : (d.addrConfirmed || ro || d.archived) ? box(d.addrConfirmed)
+      : '<input type="checkbox" class="cell-chk" data-id="' + id + '" data-field="addrConfirmed" data-hs="address_confirmed" aria-label="Address confirmed" title="Check to mark Clio Address Confirmed = Confirmed in HubSpot">';
     const plt = M ? inp("text","plaintiff",d.plaintiff,"plt-in","Plaintiffs") : esc(d.plaintiff);
     const curPill = '<span class="cur ' + (d.review === "Complete" ? "complete" : "manual") + '">' + esc(d.review) + '</span>';
     const review = M ? (S.tab === "assigned"
@@ -621,6 +671,71 @@ function renderTable(L){
   if(allRows.length > rows.length) h += '<div style="text-align:center;margin-top:12px"><button type="button" class="btn" data-more="1">Show ' + Math.min(200, allRows.length - rows.length) + ' more (' + rows.length + ' of ' + allRows.length + ' shown)</button></div>';
   w.innerHTML = h;
   if(S.focusNew){ const f = w.querySelector('input[data-id="' + CSS.escape(S.focusNew) + '"][data-field="matter"]'); if(f){ f.focus(); f.scrollIntoView({ block: "nearest" }); S.focusNew = null; } }
+}
+
+/* ---------- HubSpot write-back ---------- */
+function patchDeal(id, props){
+  const d = (S.deals || []).find(x => x.id === id); if(!d) return;
+  if("checks_received" in props) d.checksReceived = props.checks_received === "true";
+  if("clio_address_confirmed" in props) d.addrConfirmed = String(props.clio_address_confirmed).toLowerCase() === "confirmed";
+  if("check_coordinator" in props) d.coordId = String(props.check_coordinator || "");
+}
+async function sendToHubSpot(id, field, value){
+  const j = await apiReq("POST", "/api/hubspot/update", { dealId: id, field, value });
+  if(mcp && mcp.invalidate) mcp.invalidate();
+  if(j && j.properties) patchDeal(id, j.properties);
+  return j || {};
+}
+const hsErr = e => (e && e.code === "permission_denied") ? "You have view-only access, so HubSpot wasn't changed." : (e && e.code === "config_error") ? "HubSpot write-back isn't set up yet (HUBSPOT_WRITEBACK_URL is missing in Azure)." : "Couldn't update HubSpot: " + ((e && e.message) || "unknown error");
+async function hsChange(el, id, value){
+  const d = (S.deals || []).find(x => x.id === id) || {};
+  if(el.dataset.hs === "address_confirmed"){
+    if(!value) return;
+    if(!confirm("Mark the address for " + (d.matter || "this matter") + " as Confirmed in HubSpot?")){ el.checked = false; return; }
+  }
+  if(el.dataset.hs === "check_coordinator" && !value){ requestRender(true); return; }
+  el.disabled = true; el.classList.add("saving");
+  try{
+    await sendToHubSpot(id, el.dataset.hs, value);
+    toast(el.dataset.hs === "address_confirmed" ? "Address marked Confirmed in HubSpot." : "Check Coordinator changed to " + coordName(value) + " in HubSpot.");
+  }catch(e){ toast(hsErr(e)); }
+  finally{ el.classList.remove("saving"); requestRender(true); }
+}
+async function checksReceivedChange(el, id, value){
+  await save(id, "checksDate", value, el);
+  if(!value) return;
+  const d = (S.deals || []).map(view).find(x => x.id === id);
+  if(!d || d.checksReceived) return;
+  if(NO_CHECKS_RECEIVED.includes(d.checkType)){ toast("Saved. " + d.checkType + " checks don't mark Checks Received in HubSpot."); return; }
+  try{
+    const j = await sendToHubSpot(id, "checks_received", "Yes");
+    toast(j.skipped ? "Saved. This check type doesn't mark Checks Received in HubSpot." : "Checks Received marked Yes in HubSpot.");
+  }catch(e){ toast("Date saved, but " + hsErr(e).charAt(0).toLowerCase() + hsErr(e).slice(1)); }
+  requestRender(true);
+}
+
+/* ---------- Manage team ---------- */
+const unknownCoords = () => {
+  const ids = new Set();
+  (S.deals || []).concat(S.byYear[S.year] || []).forEach(d => { if(d.coordId && !S.team[d.coordId]) ids.add(d.coordId); });
+  Object.values(S.manual).forEach(m => { if(m.coordId && !S.team[m.coordId]) ids.add(m.coordId); });
+  return Array.from(ids);
+};
+function renderTeamBtn(){
+  const b = $("teamBtn"); b.hidden = !S.canWrite || !S.teamReady;
+  const n = S.teamReady ? unknownCoords().length : 0;
+  b.innerHTML = "Manage team" + (n ? '<span class="badge" title="New Check Coordinators from HubSpot need a name">' + n + "</span>" : "");
+}
+function renderTeam(){
+  const unk = unknownCoords();
+  $("teamNew").innerHTML = unk.length ? '<div class="team-new"><h3>New in HubSpot</h3><p style="margin-bottom:8px">These Check Coordinator IDs came from HubSpot and don’t have a name yet. Name each one once.</p><div class="team-list">' +
+    unk.map(oid => '<div class="team-row"><input class="cell-in" data-new="' + esc(oid) + '" placeholder="Full name for #' + esc(oid) + '" aria-label="Name for HubSpot owner ' + esc(oid) + '" value="' + esc(S.owners[oid] || "") + '"><span class="mono muted">#' + esc(oid) + '</span><button class="btn sm" type="button" data-name="' + esc(oid) + '">Save</button></div>').join("") + '</div></div>' : "";
+  const all = Object.entries(S.team).sort((a,b) => (b[1].active - a[1].active) || (a[1].name || "").localeCompare(b[1].name || ""));
+  $("teamList").innerHTML = all.length ? all.map(([oid,m]) => '<div class="team-row' + (m.active ? "" : " off") + '"><input class="cell-in" data-team-name="' + esc(oid) + '" value="' + esc(m.name || "") + '" aria-label="Name"><span class="mono muted" title="HubSpot owner ID">#' + esc(oid) + '</span><label><input type="checkbox" class="cell-chk" data-team-active="' + esc(oid) + '"' + (m.active ? " checked" : "") + '> Active</label></div>').join("") : '<p>No one yet.</p>';
+}
+async function saveMember(oid, data){
+  try{ await db.doc("team/" + oid).set(Object.assign({}, S.team[oid] || {}, data)); S.team[oid] = Object.assign({}, S.team[oid] || {}, data); renderTeam(); renderTeamBtn(); requestRender(); }
+  catch(e){ toast("Couldn't save the team change: " + ((e && (e.message || e.code)) || "unknown error")); }
 }
 
 async function saveManual(id, field, value, el){
@@ -648,6 +763,25 @@ $("fStatus").addEventListener("change", e => { S.status = e.target.value; S.limi
 $("fYear").addEventListener("change", e => { S.year = parseInt(e.target.value, 10); S.limit = 200; if(!S.byYear[S.year] && S.yearStatus[S.year] !== "loading") loadYear(S.year, false); renderAll(); });
 $("fType").addEventListener("change", e => { S.type = e.target.value; S.limit = 200; renderAll(); });
 $("addRow").addEventListener("click", addRow);
+$("teamBtn").addEventListener("click", () => { renderTeam(); $("teamDlg").showModal(); });
+$("teamClose").addEventListener("click", () => $("teamDlg").close());
+$("teamDlg").addEventListener("change", e => {
+  const t = e.target;
+  if(t.dataset.teamName){ const v = t.value.trim(); if(!v){ t.value = (S.team[t.dataset.teamName] || {}).name || ""; return; } saveMember(t.dataset.teamName, { name: v }); }
+  if(t.dataset.teamActive) saveMember(t.dataset.teamActive, { active: t.checked });
+});
+$("teamDlg").addEventListener("click", e => {
+  const b = e.target.closest("button[data-name]"); if(!b) return;
+  const oid = b.dataset.name, inp = $("teamDlg").querySelector('input[data-new="' + CSS.escape(oid) + '"]'), v = inp ? inp.value.trim() : "";
+  if(!v){ toast("Type a name first."); return; }
+  saveMember(oid, { name: v, active: true });
+});
+$("addPerson").addEventListener("click", () => {
+  const name = $("addName").value.trim(), oid = $("addId").value.trim();
+  if(!name || !/^\d{1,20}$/.test(oid)){ toast("Enter a full name and the HubSpot owner ID (numbers only)."); return; }
+  if(S.team[oid] && !confirm("#" + oid + " is already on the list as " + S.team[oid].name + ". Replace the name?")) return;
+  saveMember(oid, { name, active: true }); $("addName").value = ""; $("addId").value = "";
+});
 $("tableWrap").addEventListener("click", async e => {
   const comp = e.target.closest("button[data-complete]");
   if(comp){
@@ -680,6 +814,9 @@ $("tableWrap").addEventListener("change", e => {
     else el.classList.remove("defaulted");
   }
   if(field === "received" || field === "month") el.classList.remove("defaulted");
+  if(field === "checksDate" && value && value !== todayIso()){ toast("Checks Received can only be set to today’s date."); el.value = ""; return; }
+  if(el.dataset.hs){ hsChange(el, id, value); return; }
+  if(el.dataset.kind !== "manual" && field === "checksDate"){ checksReceivedChange(el, id, value); return; }
   if(el.dataset.kind === "manual"){ saveManual(id, field, value, el); if(field === "review" && value){ if(!(S.manual[id] || {}).month) saveManual(id, "month", todayIso()); toast("Moved to the Processed Check Log."); } else if(field === "review") toast("Moved back to Assigned Checks."); }
   else save(id, field, value, el);
 });
@@ -710,6 +847,7 @@ function makeHubSpotClient(){
     try{ return await cached.p; }catch(e){ cached = null; throw e; }
   }
   return {
+    invalidate(){ cached = null; },
     async callTool(server, tool, input, opts){
       const refresh = !!(opts && opts.cache && opts.cache.refresh);
       if(tool === SEARCH){
@@ -786,6 +924,12 @@ renderAll();
       S.edits = next; S.dbReady = true; requestRender();
       if(first) syncSnapshots();
     }, e => { toast("Couldn't load shared edits (" + ((e && (e.code || e.message)) || "error") + "). Reload to try again."); });
+    db.collection("team").onSnapshot(snap => {
+      const next = {}; snap.docs.forEach(doc => { if(doc.exists) next[doc.id] = doc.data(); });
+      S.team = next; S.teamReady = true;
+      if($("teamDlg").open && !$("teamDlg").contains(document.activeElement)) renderTeam();
+      requestRender();
+    }, e => { toast("Couldn't load the team list (" + ((e && (e.code || e.message)) || "error") + "). Reload to try again."); });
     db.collection("manual").onSnapshot(snap => {
       const next = {}; snap.docs.forEach(doc => { if(doc.exists) next[doc.id] = doc.data(); });
       S.manual = next; requestRender(!!S.focusNew);

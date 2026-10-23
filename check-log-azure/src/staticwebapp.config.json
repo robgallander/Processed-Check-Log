@@ -4,6 +4,7 @@
     { "route": "/.auth/login/twitter", "statusCode": 404 },
     { "route": "/api/hubspot/webhook", "methods": ["POST"], "allowedRoles": ["anonymous"] },
     { "route": "/403.html", "allowedRoles": ["authenticated"] },
+    { "route": "/api/hubspot/update", "methods": ["POST"], "allowedRoles": ["checklog_editor"] },
     { "route": "/api/data/*", "methods": ["POST", "PUT", "PATCH", "DELETE"], "allowedRoles": ["checklog_editor"] },
     { "route": "/*", "allowedRoles": ["checklog_editor", "checklog_viewer"] }
   ],
